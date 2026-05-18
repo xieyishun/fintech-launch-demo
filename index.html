@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumen AI — Intelligent Wealth, Reimagined</title>
+  <meta name="description" content="Lumen AI is an AI-powered robo-advisor built for the next generation of North American investors. Personalized portfolios. Tax-smart strategies. Zero guesswork." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Ambient background -->
+  <div class="bg-grid"></div>
+  <div class="bg-noise"></div>
+  <div class="bg-orb bg-orb--1"></div>
+  <div class="bg-orb bg-orb--2"></div>
+  <div class="bg-orb bg-orb--3"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="#top" class="nav__logo">
+      <span class="nav__logo-mark">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <circle cx="14" cy="14" r="13" stroke="url(#logoGrad)" stroke-width="1.5"/>
+          <circle cx="14" cy="14" r="5" fill="url(#logoGrad)"/>
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="28" y2="28">
+              <stop offset="0%" stop-color="#7C5CFF"/>
+              <stop offset="100%" stop-color="#3DD9EB"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      <span class="nav__logo-text">Lumen<span class="nav__logo-accent">AI</span></span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="#product">Product</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav__cta">Get early access →</a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="hero__badge">
+      <span class="hero__badge-dot"></span>
+      Now in private beta · North America
+    </div>
+
+    <h1 class="hero__title">
+      Wealth management,<br/>
+      <span class="hero__title-grad">rewritten by AI.</span>
+    </h1>
+
+    <p class="hero__lede">
+      Lumen AI is a next-generation robo-advisor that builds, rebalances, and tax-optimizes your
+      portfolio in real time — using the same machine learning techniques that power modern
+      hedge funds, made available to everyone.
+    </p>
+
+    <div class="hero__actions">
+      <a href="#contact" class="btn btn--primary">
+        Start investing
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L8 3m5 5l-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#how" class="btn btn--ghost">See how it works</a>
+    </div>
+
+    <!-- Floating "dashboard" preview -->
+    <div class="hero__preview" aria-hidden="true">
+      <div class="preview-card">
+        <div class="preview-card__head">
+          <div class="preview-card__title">
+            <span class="preview-card__dot"></span>
+            Portfolio · Aggressive Growth
+          </div>
+          <div class="preview-card__pill">+18.42% YTD</div>
+        </div>
+
+        <div class="preview-card__metrics">
+          <div class="metric">
+            <div class="metric__label">Total Value</div>
+            <div class="metric__value">$124,830<span class="metric__sub">.21</span></div>
+          </div>
+          <div class="metric">
+            <div class="metric__label">Today</div>
+            <div class="metric__value metric__value--up">+ $1,204</div>
+          </div>
+          <div class="metric">
+            <div class="metric__label">AI Confidence</div>
+            <div class="metric__value">94<span class="metric__sub">/100</span></div>
+          </div>
+        </div>
+
+        <svg class="preview-card__chart" viewBox="0 0 600 180" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#7C5CFF" stop-opacity="0.45"/>
+              <stop offset="100%" stop-color="#7C5CFF" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="chartStroke" x1="0" y1="0" x2="600" y2="0">
+              <stop offset="0%" stop-color="#7C5CFF"/>
+              <stop offset="100%" stop-color="#3DD9EB"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,140 C60,120 90,135 140,110 C190,85 230,95 280,70 C330,50 380,75 430,55 C480,35 530,45 600,20 L600,180 L0,180 Z" fill="url(#chartFill)"/>
+          <path d="M0,140 C60,120 90,135 140,110 C190,85 230,95 280,70 C330,50 380,75 430,55 C480,35 530,45 600,20" fill="none" stroke="url(#chartStroke)" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+
+        <div class="preview-card__rows">
+          <div class="row">
+            <div class="row__name"><span class="row__tag row__tag--vti">VTI</span> US Total Market</div>
+            <div class="row__bar"><span style="width:48%"></span></div>
+            <div class="row__val">48%</div>
+          </div>
+          <div class="row">
+            <div class="row__name"><span class="row__tag row__tag--vxus">VXUS</span> Intl. Equity</div>
+            <div class="row__bar"><span style="width:22%"></span></div>
+            <div class="row__val">22%</div>
+          </div>
+          <div class="row">
+            <div class="row__name"><span class="row__tag row__tag--bnd">BND</span> US Bonds</div>
+            <div class="row__bar"><span style="width:18%"></span></div>
+            <div class="row__val">18%</div>
+          </div>
+          <div class="row">
+            <div class="row__name"><span class="row__tag row__tag--ai">AI</span> Alt. Strategies</div>
+            <div class="row__bar"><span style="width:12%"></span></div>
+            <div class="row__val">12%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Marquee strip -->
+  <section class="marquee">
+    <div class="marquee__track">
+      <span>Featured in <em>TechCrunch</em></span><span>·</span>
+      <span>SEC-registered investment advisor</span><span>·</span>
+      <span>SIPC insured up to $500K</span><span>·</span>
+      <span>$2.1B+ assets simulated</span><span>·</span>
+      <span>4.9 ★ App Store</span><span>·</span>
+      <span>Featured in <em>TechCrunch</em></span><span>·</span>
+      <span>SEC-registered investment advisor</span><span>·</span>
+      <span>SIPC insured up to $500K</span><span>·</span>
+      <span>$2.1B+ assets simulated</span><span>·</span>
+      <span>4.9 ★ App Store</span><span>·</span>
+    </div>
+  </section>
+
+  <!-- ABOUT / COMPANY -->
+  <section class="section section--about" id="about">
+    <div class="section__head">
+      <div class="eyebrow">01 · About Lumen</div>
+      <h2 class="section__title">A new kind of advisor for a new kind of investor.</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-grid__copy">
+        <p>
+          Most Americans under 40 have never spoken to a financial advisor. Not because they don't
+          want guidance — but because the industry was built for someone else: older, wealthier,
+          comfortable with paperwork and 1% fees.
+        </p>
+        <p>
+          <strong>Lumen AI</strong> rebuilds the advisor from the ground up. We pair an institutional-grade
+          portfolio engine with a language-model interface that explains every decision in plain
+          English. No minimums. No commissions. No jargon.
+        </p>
+        <p>
+          We're headquartered in Toronto and New York, regulated in both the U.S. and Canada,
+          and on a mission to make intelligent investing the default — not the privilege.
+        </p>
+      </div>
+
+      <div class="about-grid__stats">
+        <div class="stat">
+          <div class="stat__num">0.25%</div>
+          <div class="stat__label">Annual management fee — a quarter of the industry average.</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num">$1</div>
+          <div class="stat__label">Minimum to open an account. Fractional shares included.</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num">24/7</div>
+          <div class="stat__label">AI co-pilot available in your pocket, any time of day.</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num">$2.3T</div>
+          <div class="stat__label">North American wealth held by under-40s — and underserved.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT / SERVICES -->
+  <section class="section section--product" id="product">
+    <div class="section__head">
+      <div class="eyebrow">02 · The Product</div>
+      <h2 class="section__title">Four engines. One portfolio. <span class="grad-text">Yours.</span></h2>
+      <p class="section__lede">
+        Lumen AI isn't a single algorithm — it's a coordinated system of models that handle the
+        unglamorous work great advisors used to do by hand.
+      </p>
+    </div>
+
+    <div class="features">
+      <article class="feature">
+        <div class="feature__icon">
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+            <rect x="4" y="14" width="4" height="14" rx="1" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="14" y="8" width="4" height="20" rx="1" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="24" y="4" width="4" height="24" rx="1" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>Adaptive Portfolio Engine</h3>
+        <p>Reinforcement-learning models continuously rebalance your holdings against real-time market regimes — not a static target you set on day one.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature__icon">
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+            <path d="M16 4v4M16 24v4M4 16h4M24 16h4M8.5 8.5l2.8 2.8M20.7 20.7l2.8 2.8M8.5 23.5l2.8-2.8M20.7 11.3l2.8-2.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="16" cy="16" r="4" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>Tax-Loss Harvesting+</h3>
+        <p>Every day, our system scans for harvest opportunities across taxable accounts and replaces sold lots with correlated alternatives — adding an estimated 0.8–1.4% in after-tax returns annually.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature__icon">
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+            <path d="M6 22c0-5.5 4.5-10 10-10s10 4.5 10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="16" cy="9" r="3" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M16 22v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Conversational Co-Pilot</h3>
+        <p>Ask "should I max out my Roth before paying down my student loans?" — and get a personalized, regulation-compliant answer in seconds, grounded in your actual financial data.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature__icon">
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+            <rect x="5" y="5" width="22" height="22" rx="3" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M10 16l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Goal-Based Planning</h3>
+        <p>Buying a house in Austin in 2028? Sending a kid to UBC in 2035? Lumen builds parallel sub-portfolios for each goal, each with its own risk curve and glide path.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature__icon">
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+            <path d="M16 3l11 6v8c0 6.5-4.7 11.6-11 13-6.3-1.4-11-6.5-11-13V9l11-6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Bank-Grade Security</h3>
+        <p>Assets custodied at Apex Clearing (US) and CI Investment Services (CA). 256-bit encryption, biometric login, and SIPC / CIPF insurance up to $500K per account.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature__icon">
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+            <path d="M4 12l12-7 12 7-12 7L4 12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M4 20l12 7 12-7M4 16l12 7 12-7" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Explainable AI</h3>
+        <p>Every trade comes with a plain-English rationale. No black boxes. Audit trail and regulator-ready reports available on demand.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section section--how" id="how">
+    <div class="section__head">
+      <div class="eyebrow">03 · How it works</div>
+      <h2 class="section__title">From signup to first trade <span class="grad-text">in under 5 minutes.</span></h2>
+    </div>
+
+    <ol class="steps">
+      <li class="step">
+        <div class="step__num">01</div>
+        <h3>Tell us about you</h3>
+        <p>A 90-second conversation about your goals, timeline, income, and how you actually feel about a 20% drawdown.</p>
+      </li>
+      <li class="step">
+        <div class="step__num">02</div>
+        <h3>Meet your portfolio</h3>
+        <p>The model proposes a portfolio with full transparency — every ETF, every basis point, every assumption.</p>
+      </li>
+      <li class="step">
+        <div class="step__num">03</div>
+        <h3>Fund &amp; forget</h3>
+        <p>Connect a bank in seconds via Plaid. Set up recurring deposits. We handle the rest, forever.</p>
+      </li>
+      <li class="step">
+        <div class="step__num">04</div>
+        <h3>Stay in the loop</h3>
+        <p>Weekly insights, real-time alerts, and a co-pilot you can question any time.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section section--team" id="team">
+    <div class="section__head">
+      <div class="eyebrow">04 · The Team</div>
+      <h2 class="section__title">Builders from finance, AI, and consumer tech.</h2>
+      <p class="section__lede">A small founding team with deep experience shipping regulated products at scale.</p>
+    </div>
+
+    <div class="team">
+      <article class="member">
+        <div class="member__avatar" style="--c1:#7C5CFF;--c2:#3DD9EB;">AC</div>
+        <h3>Alex Chen</h3>
+        <div class="member__role">Co-founder &amp; CEO</div>
+        <p>Former product lead, Wealthsimple. MBA, Wharton. Building tools that make money less scary since 2017.</p>
+      </article>
+
+      <article class="member">
+        <div class="member__avatar" style="--c1:#FF6BD0;--c2:#7C5CFF;">PR</div>
+        <h3>Priya Raman</h3>
+        <div class="member__role">Co-founder &amp; CTO</div>
+        <p>Ex-Two Sigma quant researcher. PhD in ML, MIT. Believes the best models are the ones you can explain to your mother.</p>
+      </article>
+
+      <article class="member">
+        <div class="member__avatar" style="--c1:#3DD9EB;--c2:#7CFFC4;">MO</div>
+        <h3>Marcus Osei</h3>
+        <div class="member__role">Head of Compliance</div>
+        <p>15 years at the SEC and OSC. Translates regulation into product decisions so the team can ship fast and ship safely.</p>
+      </article>
+
+      <article class="member">
+        <div class="member__avatar" style="--c1:#FFB75C;--c2:#FF6BD0;">SK</div>
+        <h3>Sara Kim</h3>
+        <div class="member__role">Head of Design</div>
+        <p>Previously at Robinhood and Square. Obsessed with how interfaces make people feel calm — or panicked — about money.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section--contact" id="contact">
+    <div class="contact">
+      <div class="contact__copy">
+        <div class="eyebrow">05 · Get in touch</div>
+        <h2 class="section__title">Join the waitlist.<br/><span class="grad-text">Be first in line.</span></h2>
+        <p>We're rolling out access in waves across the U.S. and Canada through 2026. Drop your details and we'll reach out when your spot opens up.</p>
+
+        <ul class="contact__meta">
+          <li><span>Email</span><a href="mailto:hello@lumen.ai">hello@lumen.ai</a></li>
+          <li><span>Press</span><a href="mailto:press@lumen.ai">press@lumen.ai</a></li>
+          <li><span>HQ</span>Toronto, ON · New York, NY</li>
+        </ul>
+      </div>
+
+      <form class="contact__form" id="waitlistForm" novalidate>
+        <div class="field">
+          <label for="name">Full name</label>
+          <input type="text" id="name" name="name" placeholder="Jamie Rivera" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="jamie@example.com" required />
+        </div>
+        <div class="field">
+          <label for="region">Where are you based?</label>
+          <select id="region" name="region" required>
+            <option value="">Select a region</option>
+            <option>United States — East</option>
+            <option>United States — West</option>
+            <option>United States — Central</option>
+            <option>Canada — East</option>
+            <option>Canada — West</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="amount">How much do you plan to invest?</label>
+          <select id="amount" name="amount">
+            <option>Just exploring</option>
+            <option>Under $10,000</option>
+            <option>$10,000 – $100,000</option>
+            <option>$100,000 – $500,000</option>
+            <option>$500,000+</option>
+          </select>
+        </div>
+        <div class="field field--full">
+          <label for="message">Anything else? (optional)</label>
+          <textarea id="message" name="message" rows="3" placeholder="What are you hoping Lumen will help you with?"></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full">
+          Request access
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L8 3m5 5l-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <div class="form-success" id="formSuccess" hidden>
+          ✓ You're on the list. We'll be in touch.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <span class="nav__logo-text">Lumen<span class="nav__logo-accent">AI</span></span>
+        <p>Intelligent wealth, reimagined for a new generation of investors.</p>
+      </div>
+      <div class="footer__cols">
+        <div>
+          <h4>Product</h4>
+          <a href="#product">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#contact">Pricing</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="#about">About</a>
+          <a href="#team">Team</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="#">Disclosures</a>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 Lumen AI Inc. · A demo project for educational purposes.</p>
+      <p class="footer__disclaimer">
+        Investing involves risk including possible loss of principal. Past performance does not
+        guarantee future results. Lumen AI is a registered investment advisor with the SEC.
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
