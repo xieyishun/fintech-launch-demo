@@ -10,442 +10,203 @@
   <link rel="stylesheet" href="../css/main.css" />
   <link rel="stylesheet" href="../css/app.css" />
   <style>
-    .settings {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 22px;
-    }
-    .settings-nav {
-      position: sticky;
-      top: 90px;
-      align-self: start;
-    }
-    .settings-nav__item {
-      display: flex; gap: 10px; align-items: center;
-      padding: 10px 14px;
-      border-radius: 9px;
-      font-size: 0.92rem;
-      color: var(--text-soft);
+    .settings-nav { display: flex; gap: 6px; padding: 4px; background: var(--surface-3); border-radius: 11px; margin-bottom: 20px; width: fit-content; flex-wrap: wrap; }
+    .settings-nav-item { padding: 8px 16px; border-radius: 8px; font-size: 0.86rem; color: var(--text-soft); cursor: pointer; font-weight: 500; }
+    .settings-nav-item--active { background: var(--surface); color: var(--text); box-shadow: var(--shadow-sm); font-weight: 600; }
+    .toggle {
+      position: relative;
+      width: 42px; height: 24px;
+      background: var(--border-strong);
+      border-radius: 999px;
       cursor: pointer;
-      margin-bottom: 4px;
-      transition: all 0.2s;
+      transition: background 0.2s;
     }
-    .settings-nav__item:hover { background: var(--surface); color: var(--text); }
-    .settings-nav__item--active {
-      background: rgba(124, 58, 237, 0.15);
-      color: white;
+    .toggle::after {
+      content: '';
+      position: absolute;
+      top: 2px; left: 2px;
+      width: 20px; height: 20px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
-    .settings-section {
-      padding: 28px;
-      border-radius: var(--radius-lg);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      margin-bottom: 18px;
-    }
-    .settings-section h2 {
-      font-size: 1.15rem;
-      margin-bottom: 4px;
-    }
-    .settings-section__sub {
-      color: var(--text-mute);
-      font-size: 0.88rem;
-      margin: 0 0 22px;
-    }
-
-    .profile-pic-row { display: flex; gap: 18px; align-items: center; margin-bottom: 20px; }
-    .profile-pic {
-      width: 80px; height: 80px;
-      border-radius: 20px;
-      background: var(--grad-primary);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: white;
-      box-shadow: 0 8px 24px rgba(124,58,237,0.4);
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-    @media (max-width: 700px) { .form-grid { grid-template-columns: 1fr; } }
-
-    .toggle-row {
-      display: flex; justify-content: space-between; align-items: center;
+    .toggle--on { background: var(--success); }
+    .toggle--on::after { transform: translateX(18px); }
+    .settings-row {
+      display: flex; align-items: center; justify-content: space-between;
       padding: 14px 0;
       border-bottom: 1px solid var(--border);
     }
-    .toggle-row:last-child { border-bottom: none; }
-    .toggle-row__label { font-weight: 500; font-size: 0.92rem; margin-bottom: 2px; }
-    .toggle-row__sub { font-size: 0.8rem; color: var(--text-mute); }
-
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 42px;
-      height: 24px;
-      flex-shrink: 0;
-    }
-    .switch input { opacity: 0; width: 0; height: 0; }
-    .switch__slider {
-      position: absolute;
-      cursor: pointer;
-      inset: 0;
-      background: var(--surface-2);
-      border: 1px solid var(--border-strong);
-      transition: 0.3s;
-      border-radius: 12px;
-    }
-    .switch__slider::before {
-      position: absolute;
-      content: "";
-      height: 16px;
-      width: 16px;
-      left: 3px;
-      bottom: 3px;
-      background: white;
-      transition: 0.3s;
-      border-radius: 50%;
-    }
-    .switch input:checked + .switch__slider {
-      background: var(--grad-primary);
-      border-color: transparent;
-    }
-    .switch input:checked + .switch__slider::before {
-      transform: translateX(18px);
-    }
-
-    .api-key-row {
-      display: flex; gap: 10px; align-items: center;
-      padding: 14px;
-      background: rgba(0,0,0,0.2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      margin-bottom: 8px;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-    }
-    .api-key-row code {
-      flex: 1;
-      color: var(--secondary-light);
-      letter-spacing: 0.02em;
-    }
-
-    @media (max-width:880px) {
-      .settings { grid-template-columns: 1fr; }
-      .settings-nav { position: static; display: flex; gap: 4px; flex-wrap: wrap; }
-      .settings-nav__item { padding: 8px 12px; font-size: 0.85rem; }
-    }
+    .settings-row:last-child { border-bottom: none; }
+    .settings-row__title { font-weight: 600; font-size: 0.94rem; margin-bottom: 2px; }
+    .settings-row__desc { font-size: 0.82rem; color: var(--text-mute); }
   </style>
 </head>
 <body>
-  <div class="bg-grid"></div>
-  <div class="bg-orb bg-orb--1"></div>
-  <div class="bg-orb bg-orb--2"></div>
+  <div class="bg-soft-pattern"></div>
 
   <div class="app">
     <aside class="sidebar" id="sidebar"></aside>
 
     <main>
-      <header class="topbar" id="topbar" data-title="Settings" data-subtitle="Manage your CreatorBank account."></header>
+      <header class="topbar" id="topbar" data-title="Settings" data-subtitle="Manage your account, security, and preferences."></header>
 
       <div class="content">
-        <div class="settings">
+        <div class="settings-nav">
+          <div class="settings-nav-item settings-nav-item--active">Profile</div>
+          <div class="settings-nav-item">Security</div>
+          <div class="settings-nav-item">Notifications</div>
+          <div class="settings-nav-item">Plan &amp; billing</div>
+          <div class="settings-nav-item">Tax preferences</div>
+          <div class="settings-nav-item">Data &amp; privacy</div>
+        </div>
 
-          <!-- Settings nav -->
-          <aside class="settings-nav">
-            <a class="settings-nav__item settings-nav__item--active" href="#profile">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              Profile
-            </a>
-            <a class="settings-nav__item" href="#platforms">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-              Platforms
-            </a>
-            <a class="settings-nav__item" href="#tax">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
-              Tax info
-            </a>
-            <a class="settings-nav__item" href="#payment">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-              Payment
-            </a>
-            <a class="settings-nav__item" href="#notify">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg>
-              Notifications
-            </a>
-            <a class="settings-nav__item" href="#api">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-              API keys
-            </a>
-          </aside>
+        <div class="content__row content__row--1-2">
+          <!-- Profile sidebar -->
+          <div class="card">
+            <div style="text-align:center; padding: 14px 0">
+              <div style="width:80px;height:80px;border-radius:18px;background:var(--grad-primary);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;color:white;font-family:var(--font-display);font-size:1.6rem;font-weight:700">AR</div>
+              <h3 style="margin-bottom:4px">Alex Rivera</h3>
+              <div class="text-mute" style="font-size:0.86rem">Multi-platform creator</div>
+              <span class="badge badge--purple" style="margin-top:10px">Pro plan</span>
+            </div>
+            <div style="border-top:1px solid var(--border);padding-top:14px;font-size:0.86rem;color:var(--text-soft)">
+              <div class="flex-between" style="padding:6px 0"><span class="text-mute">Joined</span><span>Jan 2024</span></div>
+              <div class="flex-between" style="padding:6px 0"><span class="text-mute">Plan</span><span>Pro · $19/mo</span></div>
+              <div class="flex-between" style="padding:6px 0"><span class="text-mute">Platforms</span><span>4 connected</span></div>
+              <div class="flex-between" style="padding:6px 0"><span class="text-mute">Status</span><span class="text-success">● Active</span></div>
+            </div>
+          </div>
 
-          <!-- Settings content -->
-          <div>
-            <!-- Profile -->
-            <section class="settings-section" id="profile">
-              <h2>Profile</h2>
-              <p class="settings-section__sub">Your public CreatorBank identity</p>
+          <!-- Settings -->
+          <div style="display:flex; flex-direction: column; gap: 16px">
+            <div class="card">
+              <div class="card__title">Profile information</div>
+              <div class="card__subtitle">This is what we'll show on your dashboard.</div>
 
-              <div class="profile-pic-row">
-                <div class="profile-pic">AR</div>
-                <div>
-                  <button class="btn btn--secondary btn--sm" onclick="showToast('Photo upload feature coming soon.')">Change photo</button>
-                  <button class="btn btn--ghost btn--sm" style="margin-left:6px" onclick="showToast('Photo removed.')">Remove</button>
-                  <p class="text-mute" style="font-size:0.8rem;margin:8px 0 0">JPG, GIF, or PNG. Max 2MB.</p>
-                </div>
-              </div>
-
-              <div class="form-grid">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px">
                 <div class="field">
-                  <label class="field__label">Display name</label>
+                  <label class="field__label">Full name</label>
                   <input type="text" value="Alex Rivera" />
                 </div>
                 <div class="field">
-                  <label class="field__label">Username</label>
-                  <input type="text" value="@alexrivera" />
+                  <label class="field__label">Display name</label>
+                  <input type="text" value="alexrivera" />
                 </div>
-              </div>
-
-              <div class="field">
-                <label class="field__label">Bio</label>
-                <textarea>Tech reviewer & gaming streamer. Helping creators turn passion into profit. 900K on YouTube, 250K on Twitch, 2.5M on TikTok.</textarea>
-              </div>
-
-              <div class="form-grid">
                 <div class="field">
                   <label class="field__label">Email</label>
                   <input type="email" value="alex@creatorbank.io" />
                 </div>
                 <div class="field">
-                  <label class="field__label">Creator type</label>
+                  <label class="field__label">Phone</label>
+                  <input type="tel" value="+1 (415) 555-2840" />
+                </div>
+                <div class="field">
+                  <label class="field__label">Country</label>
                   <select>
-                    <option>Multi-platform Creator</option>
-                    <option>YouTuber</option>
-                    <option>Streamer</option>
-                    <option>TikToker</option>
-                    <option>Podcaster</option>
+                    <option>United States</option>
+                    <option>Canada</option>
+                    <option>United Kingdom</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label class="field__label">Time zone</label>
+                  <select>
+                    <option>Pacific Time (UTC-8)</option>
+                    <option>Eastern Time (UTC-5)</option>
+                    <option>UTC</option>
                   </select>
                 </div>
               </div>
 
-              <button class="btn btn--primary" onclick="showToast('Profile saved!')">Save changes</button>
-            </section>
+              <div style="display:flex;gap:8px;justify-content:flex-end">
+                <button class="btn btn--ghost">Cancel</button>
+                <button class="btn btn--primary" onclick="showToast('Profile saved!')">Save changes</button>
+              </div>
+            </div>
 
-            <!-- Platforms -->
-            <section class="settings-section" id="platforms">
-              <h2>Connected Platforms</h2>
-              <p class="settings-section__sub">4 connected · 2 available to connect</p>
+            <div class="card">
+              <div class="card__title">Notification preferences</div>
+              <div class="card__subtitle">Get the right alerts at the right time.</div>
 
-              <div class="platform-list">
-                <div class="platform-item">
-                  <div class="platform-item__logo platform-item__logo--youtube">▶</div>
+              <div style="margin-top:10px">
+                <div class="settings-row">
                   <div>
-                    <div class="platform-item__name">YouTube</div>
-                    <div class="platform-item__sub">@alexrivera · 900K subs · Last synced 2 min ago</div>
+                    <div class="settings-row__title">Earnings received</div>
+                    <div class="settings-row__desc">Push notification when any platform pays out.</div>
                   </div>
-                  <button class="btn btn--ghost btn--sm" onclick="showToast('YouTube disconnected.')">Disconnect</button>
+                  <div class="toggle toggle--on" onclick="this.classList.toggle('toggle--on')"></div>
                 </div>
-                <div class="platform-item">
-                  <div class="platform-item__logo platform-item__logo--twitch">Tw</div>
+                <div class="settings-row">
                   <div>
-                    <div class="platform-item__name">Twitch</div>
-                    <div class="platform-item__sub">alexrivera · 250K followers · Last synced 5 min ago</div>
+                    <div class="settings-row__title">Tax deadline reminders</div>
+                    <div class="settings-row__desc">7-day reminders before quarterly tax due dates.</div>
                   </div>
-                  <button class="btn btn--ghost btn--sm" onclick="showToast('Twitch disconnected.')">Disconnect</button>
+                  <div class="toggle toggle--on" onclick="this.classList.toggle('toggle--on')"></div>
                 </div>
-                <div class="platform-item">
-                  <div class="platform-item__logo platform-item__logo--tiktok">Tk</div>
+                <div class="settings-row">
                   <div>
-                    <div class="platform-item__name">TikTok</div>
-                    <div class="platform-item__sub">@alexrivera · 2.5M followers · Last synced 12 min ago</div>
+                    <div class="settings-row__title">Weekly summary email</div>
+                    <div class="settings-row__desc">Every Monday morning, a digest of last week's activity.</div>
                   </div>
-                  <button class="btn btn--ghost btn--sm" onclick="showToast('TikTok disconnected.')">Disconnect</button>
+                  <div class="toggle toggle--on" onclick="this.classList.toggle('toggle--on')"></div>
                 </div>
-                <div class="platform-item">
-                  <div class="platform-item__logo platform-item__logo--patreon">P</div>
+                <div class="settings-row">
                   <div>
-                    <div class="platform-item__name">Patreon</div>
-                    <div class="platform-item__sub">alexrivera · 1,200 members · Last synced 1 hr ago</div>
+                    <div class="settings-row__title">AI insights &amp; recommendations</div>
+                    <div class="settings-row__desc">Smart suggestions about your earnings, taxes, and growth.</div>
                   </div>
-                  <button class="btn btn--ghost btn--sm" onclick="showToast('Patreon disconnected.')">Disconnect</button>
+                  <div class="toggle" onclick="this.classList.toggle('toggle--on')"></div>
                 </div>
-                <div class="platform-item" style="background:rgba(255,255,255,0.01); opacity:0.7">
-                  <div class="platform-item__logo platform-item__logo--instagram">Ig</div>
+                <div class="settings-row">
                   <div>
-                    <div class="platform-item__name">Instagram</div>
-                    <div class="platform-item__sub">Not connected</div>
+                    <div class="settings-row__title">Product updates</div>
+                    <div class="settings-row__desc">New features, beta programs, and CreatorBank news.</div>
                   </div>
-                  <button class="btn btn--primary btn--sm" onclick="showToast('Instagram connected!')">Connect</button>
+                  <div class="toggle" onclick="this.classList.toggle('toggle--on')"></div>
                 </div>
-                <div class="platform-item" style="background:rgba(255,255,255,0.01); opacity:0.7">
-                  <div class="platform-item__logo platform-item__logo--substack">S</div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card__title">Security</div>
+              <div class="card__subtitle">Last sign-in: Mountain View, CA · 2 hours ago</div>
+
+              <div style="margin-top:10px">
+                <div class="settings-row">
                   <div>
-                    <div class="platform-item__name">Substack</div>
-                    <div class="platform-item__sub">Not connected</div>
+                    <div class="settings-row__title">Two-factor authentication (2FA)</div>
+                    <div class="settings-row__desc">Authy enabled · Active since Mar 14, 2024</div>
                   </div>
-                  <button class="btn btn--primary btn--sm" onclick="showToast('Substack connected!')">Connect</button>
+                  <button class="btn btn--ghost btn--sm">Manage</button>
                 </div>
-              </div>
-            </section>
-
-            <!-- Tax info -->
-            <section class="settings-section" id="tax">
-              <h2>Tax Information</h2>
-              <p class="settings-section__sub">For 1099 forms and quarterly filings</p>
-
-              <div class="form-grid">
-                <div class="field">
-                  <label class="field__label">Legal name</label>
-                  <input type="text" value="Alex M. Rivera" />
-                </div>
-                <div class="field">
-                  <label class="field__label">Business name (optional)</label>
-                  <input type="text" placeholder="Alex Rivera LLC" />
-                </div>
-                <div class="field">
-                  <label class="field__label">Tax ID (SSN/EIN)</label>
-                  <input type="text" value="•••-••-4823" />
-                </div>
-                <div class="field">
-                  <label class="field__label">Entity type</label>
-                  <select>
-                    <option>Sole proprietor</option>
-                    <option>Single-member LLC</option>
-                    <option>S-Corporation</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label class="field__label">State</label>
-                  <select>
-                    <option>California</option>
-                    <option>Texas</option>
-                    <option>New York</option>
-                    <option>Florida</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label class="field__label">Filing status</label>
-                  <select>
-                    <option>Single</option>
-                    <option>Married, filing jointly</option>
-                    <option>Head of household</option>
-                  </select>
-                </div>
-              </div>
-
-              <button class="btn btn--primary" onclick="showToast('Tax info updated.')">Save tax info</button>
-            </section>
-
-            <!-- Payment methods -->
-            <section class="settings-section" id="payment">
-              <h2>Payment Methods</h2>
-              <p class="settings-section__sub">Where to deposit your payouts</p>
-
-              <div class="platform-list">
-                <div class="platform-item">
-                  <div class="platform-item__logo" style="background:linear-gradient(135deg,#10B981,#059669)">$</div>
+                <div class="settings-row">
                   <div>
-                    <div class="platform-item__name">Chase Bank · Checking</div>
-                    <div class="platform-item__sub">•••• 8294 · Primary · Direct deposit</div>
+                    <div class="settings-row__title">Password</div>
+                    <div class="settings-row__desc">Last changed 47 days ago</div>
                   </div>
-                  <span class="badge badge--success"><span class="badge__dot"></span>Default</span>
+                  <button class="btn btn--ghost btn--sm">Change</button>
                 </div>
-                <div class="platform-item">
-                  <div class="platform-item__logo" style="background:#003087">PP</div>
+                <div class="settings-row">
                   <div>
-                    <div class="platform-item__name">PayPal</div>
-                    <div class="platform-item__sub">alex@gmail.com · Backup</div>
+                    <div class="settings-row__title">Active sessions</div>
+                    <div class="settings-row__desc">3 devices · 1 desktop, 2 mobile</div>
                   </div>
-                  <button class="btn btn--ghost btn--sm">Edit</button>
+                  <button class="btn btn--ghost btn--sm">View all</button>
                 </div>
               </div>
+            </div>
 
-              <button class="btn btn--secondary" style="margin-top:14px" onclick="showToast('Bank linking flow opened.')">+ Add payment method</button>
+            <div class="card" style="border-color:rgba(231, 76, 60, 0.3); background: var(--danger-50)">
+              <div class="card__title" style="color:var(--danger)">Danger zone</div>
+              <div class="card__subtitle">Permanent actions. Cannot be undone.</div>
 
-              <div style="margin-top:24px">
-                <div class="field">
-                  <label class="field__label">Payout schedule</label>
-                  <select>
-                    <option>Weekly (Fridays)</option>
-                    <option selected>Bi-weekly</option>
-                    <option>Monthly</option>
-                    <option>Manual</option>
-                  </select>
-                </div>
+              <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+                <button class="btn btn--ghost btn--sm">Export all my data</button>
+                <button class="btn btn--ghost btn--sm" style="color:var(--danger);border-color:rgba(231,76,60,0.4)">Close account</button>
               </div>
-            </section>
-
-            <!-- Notifications -->
-            <section class="settings-section" id="notify">
-              <h2>Notifications</h2>
-              <p class="settings-section__sub">Choose what we email or text you about</p>
-
-              <div class="toggle-row">
-                <div>
-                  <div class="toggle-row__label">Earnings alerts</div>
-                  <div class="toggle-row__sub">When a platform payout lands</div>
-                </div>
-                <label class="switch"><input type="checkbox" checked /><span class="switch__slider"></span></label>
-              </div>
-              <div class="toggle-row">
-                <div>
-                  <div class="toggle-row__label">Tax reminders</div>
-                  <div class="toggle-row__sub">Quarterly deadlines &amp; filing prep</div>
-                </div>
-                <label class="switch"><input type="checkbox" checked /><span class="switch__slider"></span></label>
-              </div>
-              <div class="toggle-row">
-                <div>
-                  <div class="toggle-row__label">Loan payment reminders</div>
-                  <div class="toggle-row__sub">3 days before each due date</div>
-                </div>
-                <label class="switch"><input type="checkbox" checked /><span class="switch__slider"></span></label>
-              </div>
-              <div class="toggle-row">
-                <div>
-                  <div class="toggle-row__label">AI insights digest</div>
-                  <div class="toggle-row__sub">Weekly recommendations for growth</div>
-                </div>
-                <label class="switch"><input type="checkbox" checked /><span class="switch__slider"></span></label>
-              </div>
-              <div class="toggle-row">
-                <div>
-                  <div class="toggle-row__label">Product updates</div>
-                  <div class="toggle-row__sub">New features &amp; integrations</div>
-                </div>
-                <label class="switch"><input type="checkbox" /><span class="switch__slider"></span></label>
-              </div>
-              <div class="toggle-row">
-                <div>
-                  <div class="toggle-row__label">Marketing emails</div>
-                  <div class="toggle-row__sub">Tips, case studies, creator stories</div>
-                </div>
-                <label class="switch"><input type="checkbox" /><span class="switch__slider"></span></label>
-              </div>
-            </section>
-
-            <!-- API Keys -->
-            <section class="settings-section" id="api">
-              <h2>API Keys</h2>
-              <p class="settings-section__sub">For advanced integrations · Business plan required for production keys</p>
-
-              <div class="api-key-row">
-                <code>cb_live_••••••••••••••••••••3f8a</code>
-                <span class="badge badge--success"><span class="badge__dot"></span>Active</span>
-                <button class="btn btn--ghost btn--sm" onclick="showToast('Copied to clipboard.')">Copy</button>
-              </div>
-              <div class="api-key-row">
-                <code>cb_test_••••••••••••••••••••9c2b</code>
-                <span class="badge badge--info"><span class="badge__dot"></span>Sandbox</span>
-                <button class="btn btn--ghost btn--sm" onclick="showToast('Copied to clipboard.')">Copy</button>
-              </div>
-
-              <button class="btn btn--secondary" style="margin-top:12px" onclick="showToast('New API key generated.')">+ Generate new key</button>
-            </section>
-
+            </div>
           </div>
         </div>
       </div>
@@ -455,18 +216,10 @@
   <script src="../js/data.js"></script>
   <script src="../js/layout.js"></script>
   <script>
-    // Settings nav highlighting on scroll
-    document.querySelectorAll('.settings-nav__item').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.querySelectorAll('.settings-nav__item').forEach(l => l.classList.remove('settings-nav__item--active'));
-        link.classList.add('settings-nav__item--active');
-        const target = document.querySelector(link.getAttribute('href'));
-        if (target) {
-          window.scrollTo({ top: target.offsetTop - 90, behavior: 'smooth' });
-        }
-      });
-    });
+    document.querySelectorAll('.settings-nav-item').forEach(t => t.addEventListener('click', () => {
+      document.querySelectorAll('.settings-nav-item').forEach(x => x.classList.remove('settings-nav-item--active'));
+      t.classList.add('settings-nav-item--active');
+    }));
   </script>
 </body>
 </html>

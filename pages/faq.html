@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ · CreatorBank</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/landing.css" />
+  <style>
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 50px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .faq-sidebar { position: sticky; top: 90px; align-self: start; }
+    .faq-sidebar h4 {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-mute);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .faq-sidebar a {
+      display: block;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      margin-bottom: 2px;
+      transition: all 0.15s;
+    }
+    .faq-sidebar a:hover, .faq-sidebar a.active {
+      background: var(--primary-50);
+      color: var(--primary);
+    }
+
+    .faq-cat { padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px solid var(--border); }
+    .faq-cat:last-child { border-bottom: none; }
+    .faq-cat__head {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 18px;
+    }
+    .faq-cat__icon {
+      width: 44px; height: 44px;
+      border-radius: 11px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.3rem;
+    }
+    .faq-cat__icon--purple { background: var(--primary-50); color: var(--primary); }
+    .faq-cat__icon--teal   { background: var(--secondary-50); color: var(--secondary-dark); }
+    .faq-cat__icon--gold   { background: var(--accent-50); color: var(--accent-dark); }
+    .faq-cat__icon--green  { background: var(--success-50); color: var(--success); }
+    .faq-cat h2 { font-size: 1.4rem; }
+    .faq-cat__desc { color: var(--text-mute); font-size: 0.9rem; margin: 2px 0 0; }
+
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    .faq-item__btn {
+      width: 100%; text-align: left;
+      padding: 16px 18px;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      font-size: 0.96rem;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+    }
+    .faq-item__btn:hover { background: var(--surface-2); }
+    .faq-item__icon { transition: transform 0.2s; flex-shrink: 0; color: var(--text-mute); }
+    .faq-item--open .faq-item__icon { transform: rotate(180deg); color: var(--primary); }
+    .faq-item__answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 18px;
+      color: var(--text-soft);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+    .faq-item--open .faq-item__answer { max-height: 400px; padding: 0 18px 16px; }
+
+    @media (max-width: 880px) {
+      .faq-layout { grid-template-columns: 1fr; }
+      .faq-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-soft-pattern"></div>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="logo">
+        <span class="logo__mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5z" fill="currentColor"/></svg></span>
+        <span>Creator<span class="logo__text-accent">Bank</span></span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="features.html">Features</a></li>
+        <li><a href="../index.html#how">How it works</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="faq.html" style="color:var(--primary)">FAQ</a></li>
+        <li><a href="dashboard.html">Live demo</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="login.html" class="btn btn--ghost btn--sm">Sign in</a>
+        <a href="signup.html" class="btn btn--primary btn--sm">Start Free →</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="eyebrow" style="margin-bottom:14px">Support</div>
+    <h1>Frequently asked <span class="grad-text">questions.</span></h1>
+    <p>Can't find what you're looking for? Email us at support@creatorbank.com — we reply in under 24 hours.</p>
+  </div>
+
+  <section class="section" style="padding-top:20px">
+    <div class="faq-layout">
+      <aside class="faq-sidebar">
+        <h4>Browse</h4>
+        <a href="#account" class="active">🔒 Account &amp; Security</a>
+        <a href="#earnings">💰 Earnings &amp; Payments</a>
+        <a href="#taxes">🧾 Tax &amp; Forecasting</a>
+        <a href="#loans">📈 Loans &amp; Advances</a>
+        <a href="#card">💳 Debit Card</a>
+        <a href="#company">🏢 Company</a>
+      </aside>
+
+      <div>
+
+        <!-- Account & Security -->
+        <div class="faq-cat" id="account">
+          <div class="faq-cat__head">
+            <div class="faq-cat__icon faq-cat__icon--purple">🔒</div>
+            <div><h2>Account &amp; Security</h2><p class="faq-cat__desc">Keeping your data and money safe</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>Is my data secure?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Yes. We use bank-level 256-bit SSL encryption. All accounts are FDIC-insured up to $250K through partner banks. We undergo third-party security audits every quarter and are SOC 2 Type II compliant.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>How do I connect my platforms?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Click "Add platform" on your dashboard, choose YouTube/TikTok/Patreon/etc., and complete OAuth on the platform's site. We never see your passwords — only read-only access to earnings data. You can revoke anytime.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>Can I change my plan anytime?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Yes. Upgrade or downgrade anytime. Changes take effect next billing cycle. We'll prorate the difference. Cancel anytime — no fees, no questions asked.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>What if I lose access to my account?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Contact support@creatorbank.com. We'll verify your identity with 2FA recovery codes and a video call. Your funds are always recoverable — they're held by our FDIC-insured partner bank, not by CreatorBank directly.</div>
+          </div>
+        </div>
+
+        <!-- Earnings & Payments -->
+        <div class="faq-cat" id="earnings">
+          <div class="faq-cat__head">
+            <div class="faq-cat__icon faq-cat__icon--teal">💰</div>
+            <div><h2>Earnings &amp; Payments</h2><p class="faq-cat__desc">How money flows through CreatorBank</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>How often do earnings update?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Most platforms sync every 6 hours. Some (like YouTube AdSense) update once nightly. The dashboard always shows you the last sync time. You can manually refresh anytime.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>How does early payout work?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Pending payouts show in the "Pending" section. Click "Claim early" and we'll advance 90% within 1-2 hours. Fee: 1-2% of the amount. When the platform actually pays, we reconcile automatically.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>What if I have a bad month?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Your tax reserve adjusts automatically (lower earnings = lower reserve). No surprises. If you have an active advance, repayment slows automatically too — we tie repayment to your actual earnings, not a fixed schedule.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>Can I withdraw money to my bank?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Yes, anytime. Standard ACH transfers are free and take 1-2 business days. Instant transfers cost $0.50 and arrive in under a minute (via partner banks' instant payment networks).</div>
+          </div>
+        </div>
+
+        <!-- Tax & Forecasting -->
+        <div class="faq-cat" id="taxes">
+          <div class="faq-cat__head">
+            <div class="faq-cat__icon faq-cat__icon--green">🧾</div>
+            <div><h2>Tax &amp; Forecasting</h2><p class="faq-cat__desc">The IRS isn't going to surprise you anymore</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>How is my tax reserve calculated?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Based on income type, your state, and federal rates. We use IRS guidelines and your historical W-2 if applicable. Rates differ per platform: YouTube AdSense ~30%, TikTok ~25%, Patreon ~20%, sponsorships ~32%. Updated quarterly.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>Can I adjust my tax reserve rate?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Yes. Go to Settings → Tax Preferences → Adjust Reserve. Changes take effect immediately on future payouts. If you have an unusual tax situation, we recommend talking to one of our partner tax pros (free 30 min consultation included with Pro).</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>How accurate is the forecast?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">99% of forecasts are within ±10% of actual. Built using your 18-month earnings history + anonymized platform-wide trend data. Accuracy improves the longer you use CreatorBank.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>Do you file taxes for me?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Not directly — we're not a CPA firm. But we auto-generate your 1099-MISC, Schedule C, and annual P&amp;L. You can hand these to your accountant (one-click share) or use our partner network of creator-friendly CPAs.</div>
+          </div>
+        </div>
+
+        <!-- Loans & Advances -->
+        <div class="faq-cat" id="loans">
+          <div class="faq-cat__head">
+            <div class="faq-cat__icon faq-cat__icon--gold">📈</div>
+            <div><h2>Loans &amp; Advances</h2><p class="faq-cat__desc">Capital that understands creator income</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>Can I get an advance with no credit check?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Yes. We use revenue-based underwriting — your earnings history IS your credit. We don't pull your FICO score. Approval typically takes 5 minutes.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>What are the fees for advances?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Revenue advances: 2-5% of advance amount, disclosed upfront. The rate depends on advance size and your earnings stability. Early payouts: 1-2%. Term loans: 8-15% APR. No hidden fees, ever.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>Can I repay early?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Yes, anytime, without penalty. For revenue advances, repayment is automatically tied to your earnings — there's no "fixed" payment to skip ahead on. For term loans, you can prepay principal anytime via the app.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>What if my channel gets demonetized?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Repayment automatically pauses while we work with you on a recovery plan. We don't punish creators for platform decisions outside their control. (This is one of the biggest advantages over traditional bank loans.)</div>
+          </div>
+        </div>
+
+        <!-- Debit Card -->
+        <div class="faq-cat" id="card">
+          <div class="faq-cat__head">
+            <div class="faq-cat__icon faq-cat__icon--teal">💳</div>
+            <div><h2>Debit Card</h2><p class="faq-cat__desc">The everyday spending side of CreatorBank</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>When will I get my card?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Virtual card: instantly. Tap "Order card" and it's in your app — usable immediately via Apple Pay / Google Pay. Physical card: 5-7 business days via USPS, longer for international addresses.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>Are there any fees?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">No annual fee. No monthly fee. 0% foreign transaction fee. ATM withdrawals are free at 55,000+ AllPoint ATMs. Earn 1-2% cashback on eligible creator-related purchases.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>What counts as a creator-related purchase?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Camera/gear shops (B&amp;H, Adorama), software (Adobe, Final Cut, DaVinci), ads (Google Ads, Meta Ads), creator services (Fiverr, Upwork), and stock media (Storyblocks, Artlist). We auto-detect from merchant category codes.</div>
+          </div>
+        </div>
+
+        <!-- Company -->
+        <div class="faq-cat" id="company">
+          <div class="faq-cat__head">
+            <div class="faq-cat__icon faq-cat__icon--purple">🏢</div>
+            <div><h2>Company</h2><p class="faq-cat__desc">Who we are and how we operate</p></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>Is CreatorBank a real bank?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">CreatorBank is a financial technology (fintech) company. We partner with FDIC-insured banks to hold deposits and issue debit cards. Your money is protected up to $250K just like at a traditional bank.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>How do you make money if Free is actually free?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Pro/Business subscriptions, revenue advance fees (2-5%), early payout fees (1-2%), debit card interchange (0.5%), and a small spread between what we earn on deposits vs the 4.5% APY we pay you. We never sell your data.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__btn">
+              <span>Who should I contact with questions?</span>
+              <svg class="faq-item__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-item__answer">Email support@creatorbank.com (24-hour response). Live chat in-app for Pro/Business plans. Phone support for Business plans with a 4-hour SLA. We don't outsource — real CreatorBank humans, all based in the US.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="cta-strip">
+      <h2>Still have questions?</h2>
+      <p>Our team is real, fast, and creator-friendly. Email support@creatorbank.com.</p>
+      <a href="signup.html" class="btn btn--primary btn--lg">Or just try the demo →</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__bottom">© 2026 CreatorBank Inc. · A demo project for educational purposes.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-item__btn').forEach(btn => btn.addEventListener('click', () => {
+      btn.closest('.faq-item').classList.toggle('faq-item--open');
+    }));
+    // Active sidebar
+    document.querySelectorAll('.faq-sidebar a').forEach(a => a.addEventListener('click', e => {
+      document.querySelectorAll('.faq-sidebar a').forEach(x => x.classList.remove('active'));
+      a.classList.add('active');
+    }));
+  </script>
+</body>
+</html>

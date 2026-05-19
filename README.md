@@ -1,124 +1,108 @@
-# CreatorBank — Demo Site
+# CreatorBank — Fintech Demo
 
-> An all-in-one financial platform for content creators.
-> School project · Fintech Company Launch (A2)
+> Banking for creators with unpredictable income.
 
-🌐 **Live demo:** _(your Vercel URL here)_
-👨‍🎓 **Team:** xieyishun + team
-🎓 **Course:** A2 Fintech Company Launch
+A complete static web demo for **A2 Fintech Company Launch**.
+Light-theme Stripe-style fintech UI with 11 fully interactive pages.
 
 ---
 
-## What is CreatorBank?
+## ✨ What's inside
 
-A premium fintech platform built for the creator economy. Manage earnings across YouTube, Twitch, TikTok, and Patreon. Plan taxes. Apply for creator-specific loans. Get AI-powered monetization insights.
+### Public pages
+- **`index.html`** — Landing page with 5 creator pain points, 6 features, 3-step how-it-works, differentiation section, testimonials, pricing preview, CTA
+- **`pages/features.html`** — 8 features detailed with visual mockups
+- **`pages/pricing.html`** — 3-tier pricing ($0 / $19 / $79) + feature comparison table + FAQ
+- **`pages/faq.html`** — Full FAQ organized into 6 categories
+- **`pages/login.html`** + **`pages/signup.html`** — Auth pages with OAuth + creator-type selector
 
-This is a **frontend-only demo** built with vanilla HTML, CSS, and JavaScript. All data is mocked. No backend, no database — just a polished walkthrough of what the real product would feel like.
-
----
-
-## Pages (9 total)
-
-| # | Page | URL | What's in it |
-|---|------|-----|-------------|
-| 1 | Landing | `/index.html` | Hero, problem/solution, features, testimonials, pricing |
-| 2 | Sign up | `/pages/signup.html` | OAuth + email signup, creator-type selector |
-| 3 | Log in | `/pages/login.html` | OAuth + email login |
-| 4 | Dashboard | `/pages/dashboard.html` | KPIs, earnings chart, platforms, transactions |
-| 5 | Earnings | `/pages/earnings.html` | Heatmap calendar, trend lines, full transaction history |
-| 6 | Tax Planning | `/pages/taxes.html` | Tax calculator, quarterly schedule, deduction tracker, AI advisor |
-| 7 | Creator Loans | `/pages/loans.html` | Eligibility, loan types, calculator slider, application flow |
-| 8 | Insights | `/pages/insights.html` | AI recommendations, top content, ROI per platform, brand matches |
-| 9 | Settings | `/pages/settings.html` | Profile, platforms, tax info, payment, notifications, API keys |
-| 10 | Pricing | `/pages/pricing.html` | 3 tiers, comparison table, FAQ |
-
----
-
-## Tech stack
-
-- **HTML / CSS / Vanilla JS** — no frameworks, no build step
-- **[Chart.js](https://www.chartjs.org/)** via CDN — for all data visualizations
-- **Google Fonts** — Inter, Space Grotesk, JetBrains Mono
-- **Lucide-style SVG icons** — inlined
-- **Vercel** — for static hosting
+### Authenticated app
+- **`pages/dashboard.html`** — 4 KPI cards · Cash flow forecast chart · Revenue mix donut · Connected platforms · Quick actions · Recent transactions
+- **`pages/earnings.html`** — Connected platforms manager · Stacked bar history chart · Earnings table
+- **`pages/taxes.html`** — Tax reserve tracker · Quarterly estimates · AI Tax Advisor · Upcoming deadlines · Document downloads
+- **`pages/loans.html`** — 🌟 The big one. Combines **4 financial modules**:
+  - 💰 Revenue Advance (slider calculator, instant approval)
+  - ⚡ Early Payout (pending payouts list, claim now)
+  - 🏦 Creator Loans (3 loan types + calculator)
+  - 💳 Debit Card (visual card + cashback)
+  - 🐷 High-Yield Savings (4.5% APY + auto-save calculator)
+- **`pages/insights.html`** — AI growth signal hero · 6 personalized insight cards · Per-video ROI tracker
+- **`pages/settings.html`** — Profile, notifications, security, danger zone
 
 ---
 
-## Project structure
+## 🎨 Design system
 
-```
-.
-├── index.html               # Landing page
-├── css/
-│   ├── main.css            # Design system & shared components
-│   ├── landing.css         # Landing-page-specific styles
-│   ├── app.css             # Dashboard/app shell (sidebar, topbar, cards)
-│   └── auth.css            # Login/signup layout
-├── js/
-│   ├── data.js             # Mock data + helpers + toast/modal
-│   ├── landing.js          # Hero chart, scroll reveal
-│   ├── layout.js           # Injects sidebar + topbar into app pages
-│   └── dashboard.js        # Dashboard charts and transactions
-└── pages/
-    ├── login.html
-    ├── signup.html
-    ├── dashboard.html
-    ├── earnings.html
-    ├── taxes.html
-    ├── loans.html
-    ├── insights.html
-    ├── settings.html
-    └── pricing.html
-```
+| Color | Hex | Usage |
+|---|---|---|
+| Deep Purple | `#5B2C6F` | Primary brand, headlines, accents |
+| Teal | `#17A2B8` | Primary CTAs, action buttons |
+| Gold | `#FFA500` | Accents, success metrics, "earn" highlights |
+| Charcoal | `#2C3E50` | Body text, dark backgrounds |
+| Off-white | `#F8F9FA` | Page background |
+| Success Green | `#27AE60` | Paid/positive |
+| Error Red | `#E74C3C` | Errors/alerts |
+
+**Typography:** Space Grotesk (display), Inter (body), JetBrains Mono (numbers).
+**Style:** Premium fintech (Stripe-like). Light theme. Soft shadows. Subtle gradients.
 
 ---
 
-## Mock data
-
-The demo follows one creator's story:
-
-> **Alex Rivera** — multi-platform creator
-> 900K YouTube subs · 250K Twitch followers · 2.5M TikTok · 1,200 Patreon members
-> **$20,200/month** · **$200K YTD** · **15% MoM growth** · est. **$60K** tax obligation
-
-All charts, KPIs, transactions, and recommendations reference this persona, defined in [`js/data.js`](./js/data.js).
-
----
-
-## Run locally
-
-It's static HTML — just open `index.html` in any browser. Or for nicer navigation:
+## 🚀 Run locally
 
 ```bash
-# Python 3
-python -m http.server 8000
+# Easiest: open index.html in a browser
 
-# Then open http://localhost:8000
+# Or run a local server (any one works):
+python -m http.server 8000
+# then visit http://localhost:8000
+```
+
+## 🌐 Deploy to Vercel
+
+```bash
+# Already set up — just push to GitHub and Vercel will pick it up
+git add .
+git commit -m "Update CreatorBank demo to light theme"
+git push
 ```
 
 ---
 
-## Deploy to Vercel
+## 📊 Mock data (Alex Rivera — multi-platform creator)
 
-This site is pre-configured for Vercel — push to GitHub and import. No build settings needed.
+| Source | Subscribers/Followers | May 2026 |
+|---|---|---|
+| YouTube | 900K | $16,400 |
+| Patreon | 1,200 members | $4,200 |
+| TikTok | 2.5M | $2,100 |
+| Sponsorships | 2 active (NordVPN, Audible) | $2,100 |
+| **Total** | | **$24,800** |
 
-1. Push this repo to GitHub
-2. Go to [vercel.com](https://vercel.com) → New Project → import the repo
-3. Leave all settings as default (Vercel auto-detects static HTML)
-4. Click **Deploy** — done in ~30 seconds
-
----
-
-## Design
-
-- **Brand colors:** Primary `#7C3AED` (purple), Secondary `#06B6D4` (cyan), Accent `#F59E0B` (amber)
-- **Theme:** Dark, premium fintech with creator-friendly energy
-- **Typography:** Inter (body) · Space Grotesk (display) · JetBrains Mono (numbers)
+- Tax reserve: $7,440 (28% auto)
+- Available cash: $17,360
+- Forecast (June): $25,600
+- Pre-approved credit line: $50K
 
 ---
 
-## License
+## 💜 Differentiation: Growth-as-Collateral Banking
 
-For educational use. Mock data only — not a real financial product.
+> *"We don't bank your past. We bank your growth."*
+
+Most fintech for creators (Karat, Stir) underwrites based on last year's earnings — a snapshot of who you were. **CreatorBank underwrites based on your follower growth rate** — a signal of who you're becoming.
+
+In the demo, your "$35K → $50K credit limit increase" appears in the AI Insights page, triggered by an 18% subscriber jump in 90 days. This is the storyline judges should remember.
+
+---
+
+## 🛠 Tech
+
+- Vanilla HTML/CSS/JS — no build step, no framework
+- Chart.js via CDN for data viz
+- Google Fonts via CDN
+- Mobile-responsive (works down to 320px)
+
+---
 
 Made with 💜 for the A2 Fintech Launch project.

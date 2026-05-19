@@ -3,79 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Creator Loans · CreatorBank</title>
+  <title>Banking &amp; Loans · CreatorBank</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/main.css" />
   <link rel="stylesheet" href="../css/app.css" />
   <style>
-    .eligibility {
-      background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(6,182,212,0.10));
-      border: 1px solid rgba(16,185,129,0.3);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      margin-bottom: 18px;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 24px;
-    }
-    .eligibility__icon {
-      width: 64px; height: 64px;
-      border-radius: 16px;
-      background: var(--grad-success);
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 8px 30px rgba(16,185,129,0.4);
-    }
-    .eligibility__title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; margin-bottom: 4px; }
-    .eligibility__sub { color: var(--text-soft); font-size: 0.92rem; }
-    .eligibility__amount {
-      font-family: var(--font-display); font-size: 2.4rem; font-weight: 700;
-      background: var(--grad-success);
-      -webkit-background-clip: text; background-clip: text;
-      color: transparent;
-    }
-    @media (max-width: 760px) {
-      .eligibility { grid-template-columns: 1fr; text-align: center; }
-    }
-
-    .loan-types { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 18px; }
-    .loan-type {
-      padding: 24px;
-      border-radius: var(--radius-lg);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      transition: all 0.25s;
-      cursor: pointer;
-    }
-    .loan-type:hover { border-color: var(--primary); transform: translateY(-3px); }
-    .loan-type__icon {
-      width: 50px; height: 50px;
-      border-radius: 13px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 14px;
-    }
-    .loan-type h3 { font-size: 1.1rem; margin-bottom: 6px; }
-    .loan-type__desc { font-size: 0.88rem; color: var(--text-soft); margin: 0 0 14px; }
-    .loan-type__terms {
-      display: flex; justify-content: space-between;
-      font-size: 0.82rem;
-      padding-top: 14px;
-      border-top: 1px solid var(--border);
-    }
-    .loan-type__terms span:last-child { color: var(--text); font-weight: 500; }
-    @media (max-width:880px){ .loan-types{grid-template-columns:1fr;} }
-
-    .calculator { padding: 30px; }
-    .calculator__slider-wrap { margin: 24px 0; }
-    .calculator__amount {
+    .section-title {
       font-family: var(--font-display);
-      font-size: 2.6rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 28px 0 14px;
+      letter-spacing: -0.01em;
+    }
+    .section-title:first-child { margin-top: 0; }
+
+    /* Advance/Payout/Card/Savings shared anchor styling */
+    .anchor-target { scroll-margin-top: 80px; }
+
+    /* Slider */
+    .calculator { padding: 26px; }
+    .calc__amount {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
       font-weight: 700;
       text-align: center;
       letter-spacing: -0.02em;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
+      color: var(--primary);
     }
     .slider {
       width: 100%;
@@ -83,296 +39,464 @@
       appearance: none;
       height: 6px;
       border-radius: 3px;
-      background: var(--surface-2);
+      background: var(--surface-3);
       outline: none;
     }
     .slider::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 24px; height: 24px;
+      width: 22px; height: 22px;
       border-radius: 50%;
-      background: var(--grad-primary);
+      background: var(--primary);
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(124,58,237,0.5);
+      box-shadow: 0 4px 12px rgba(91, 44, 111, 0.4);
+      border: 3px solid white;
       transition: transform 0.15s;
     }
     .slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
     .slider::-moz-range-thumb {
-      width: 24px; height: 24px;
+      width: 22px; height: 22px;
       border-radius: 50%;
-      background: #7C3AED;
+      background: var(--primary);
       cursor: pointer;
-      border: none;
+      border: 3px solid white;
     }
     .slider-marks {
       display: flex; justify-content: space-between;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: var(--text-mute);
       margin-top: 8px;
     }
     .calc-summary {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 26px;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-top: 22px;
     }
     .calc-summary__item {
-      background: rgba(0,0,0,0.2);
+      background: var(--surface-2);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px;
+      border-radius: 10px;
+      padding: 14px;
       text-align: center;
     }
-    .calc-summary__label { font-size: 0.78rem; color: var(--text-mute); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
-    .calc-summary__value { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; }
+    .calc-summary__label { font-size: 0.74rem; color: var(--text-mute); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; font-weight: 600; }
+    .calc-summary__value { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; }
 
-    .steps-flow {
+    /* Eligibility hero */
+    .elig-hero {
+      background: linear-gradient(135deg, var(--success-50), var(--secondary-50));
+      border: 1px solid rgba(39, 174, 96, 0.25);
+      border-radius: var(--radius-lg);
+      padding: 24px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 18px;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
     }
-    .step-badge {
-      padding: 14px;
+    .elig-hero__icon {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      background: var(--success);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 22px rgba(39, 174, 96, 0.3);
+    }
+    .elig-hero__title { font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
+    .elig-hero__sub { color: var(--text-soft); font-size: 0.9rem; }
+    .elig-hero__amount {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--success);
+    }
+    @media (max-width: 760px) {
+      .elig-hero { grid-template-columns: 1fr; text-align: center; }
+    }
+
+    /* Loan types */
+    .loan-types { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 18px; }
+    .loan-type {
+      padding: 20px;
+      border-radius: 12px;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      display: flex; align-items: center; gap: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
     }
-    .step-badge--active { border-color: var(--primary); background: rgba(124,58,237,0.1); }
-    .step-badge--done { border-color: rgba(16,185,129,0.3); background: rgba(16,185,129,0.06); }
-    .step-badge__num {
-      width: 28px; height: 28px;
-      border-radius: 50%;
-      background: var(--surface-2);
+    .loan-type:hover { border-color: var(--primary); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+    .loan-type__icon {
+      width: 42px; height: 42px;
+      border-radius: 11px;
       display: flex; align-items: center; justify-content: center;
-      font-weight: 600; font-size: 0.85rem;
-      flex-shrink: 0;
+      margin-bottom: 12px;
     }
-    .step-badge--active .step-badge__num { background: var(--primary); color: white; }
-    .step-badge--done .step-badge__num { background: var(--success); color: white; }
-    .step-badge__label { font-size: 0.88rem; }
-    .step-badge__sub { font-size: 0.74rem; color: var(--text-mute); }
-    @media (max-width:760px) { .steps-flow { grid-template-columns: 1fr; } }
+    .loan-type h3 { font-size: 1rem; margin-bottom: 4px; }
+    .loan-type__desc { font-size: 0.84rem; color: var(--text-soft); margin: 0 0 12px; }
+    .loan-type__terms {
+      display: flex; justify-content: space-between;
+      font-size: 0.78rem;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+    }
+    .loan-type__terms span:last-child { color: var(--text); font-weight: 600; }
+    @media (max-width: 880px) { .loan-types { grid-template-columns: 1fr; } }
+
+    /* Pending payouts list */
+    .pending-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+    .pending-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px;
+      background: var(--surface-2);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .pending-item__amount {
+      margin-left: auto;
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--text);
+    }
+    .pending-item__date { font-size: 0.78rem; color: var(--text-mute); }
   </style>
 </head>
 <body>
-  <div class="bg-grid"></div>
-  <div class="bg-orb bg-orb--1"></div>
-  <div class="bg-orb bg-orb--2"></div>
+  <div class="bg-soft-pattern"></div>
 
   <div class="app">
     <aside class="sidebar" id="sidebar"></aside>
 
     <main>
-      <header class="topbar" id="topbar" data-title="Creator Loans" data-subtitle="Capital underwritten on your platform earnings — not a W-2."></header>
+      <header class="topbar" id="topbar" data-title="Banking &amp; Loans" data-subtitle="Funding, debit, savings, and early payouts — built for creators."></header>
 
       <div class="content">
 
-        <!-- Eligibility hero -->
-        <div class="eligibility">
-          <div class="eligibility__icon">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <!-- ELIGIBILITY HERO -->
+        <div class="elig-hero">
+          <div class="elig-hero__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="20 6 9 17 4 12"/>
             </svg>
           </div>
           <div>
-            <div class="eligibility__title">You're pre-approved for up to <span style="background:var(--grad-success);-webkit-background-clip:text;background-clip:text;color:transparent">$50,000</span></div>
-            <div class="eligibility__sub">Based on $200K YTD earnings and 12% debt-to-income ratio · No hard credit check required.</div>
+            <div class="elig-hero__title">You're pre-approved for up to <span class="text-success">$50,000</span></div>
+            <div class="elig-hero__sub">Revenue-based underwriting · No FICO check · Debt-to-income: 12% (excellent)</div>
           </div>
           <div style="text-align:right">
-            <div class="eligibility__amount">$50K</div>
-            <div class="text-mute" style="font-size:0.82rem">Max credit line</div>
+            <div class="elig-hero__amount">$50K</div>
+            <div class="text-mute" style="font-size:0.8rem">Max line of credit</div>
           </div>
         </div>
 
-        <!-- Loan types -->
-        <h2 style="font-size:1.3rem;margin-bottom:14px">Choose your loan type</h2>
-        <div class="loan-types">
-          <div class="loan-type" onclick="selectLoanType('Equipment Finance')">
-            <div class="loan-type__icon" style="background:rgba(6,182,212,0.15);color:#67E8F9">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><circle cx="9" cy="12" r="3"/><path d="M22 8v8M18 6h4M18 18h4"/></svg>
-            </div>
-            <h3>Equipment Finance</h3>
-            <p class="loan-type__desc">Cameras, lights, computers, audio gear. Spread the cost over time.</p>
-            <div class="loan-type__terms">
-              <span class="text-mute">Range</span><span>$500 – $25K</span>
-            </div>
-            <div class="loan-type__terms">
-              <span class="text-mute">APR</span><span>8% – 12%</span>
-            </div>
-          </div>
-
-          <div class="loan-type" onclick="selectLoanType('Growth Loan')">
-            <div class="loan-type__icon" style="background:rgba(124,58,237,0.18);color:#C4B5FD">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            </div>
-            <h3>Growth Loan</h3>
-            <p class="loan-type__desc">Marketing campaigns, channel expansion, hiring editors and assistants.</p>
-            <div class="loan-type__terms">
-              <span class="text-mute">Range</span><span>$5K – $50K</span>
-            </div>
-            <div class="loan-type__terms">
-              <span class="text-mute">APR</span><span>10% – 15%</span>
-            </div>
-          </div>
-
-          <div class="loan-type" onclick="selectLoanType('Emergency Cash')">
-            <div class="loan-type__icon" style="background:rgba(245,158,11,0.18);color:#FCD34D">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <h3>Emergency Cash</h3>
-            <p class="loan-type__desc">Quick small loans when YouTube's payout is "delayed" yet again.</p>
-            <div class="loan-type__terms">
-              <span class="text-mute">Range</span><span>$200 – $5K</span>
-            </div>
-            <div class="loan-type__terms">
-              <span class="text-mute">APR</span><span>14% – 18%</span>
-            </div>
-          </div>
+        <!-- TABS to anchor sections -->
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px">
+          <a href="#advance" class="btn btn--secondary btn--sm">💰 Revenue Advance</a>
+          <a href="#early-payout" class="btn btn--secondary btn--sm">⚡ Early Payout</a>
+          <a href="#loans" class="btn btn--secondary btn--sm">🏦 Loans</a>
+          <a href="#debit-card" class="btn btn--secondary btn--sm">💳 Debit Card</a>
+          <a href="#savings" class="btn btn--secondary btn--sm">🐷 Savings</a>
         </div>
 
-        <!-- Calculator + Application steps -->
+        <!-- ============ 1. REVENUE ADVANCE ============ -->
+        <h2 class="section-title anchor-target" id="advance">💰 Revenue Advance — Borrow against your earnings</h2>
+
         <div class="content__row content__row--2-1">
-
           <div class="card calculator">
-            <div class="card__title">Loan Calculator</div>
-            <div class="card__subtitle">Adjust the amount to see your monthly payment</div>
+            <div class="card__title">Advance Calculator</div>
+            <div class="card__subtitle">Up to 50% of next month's verified earnings · No credit check</div>
 
-            <div class="calculator__amount mono" id="calcAmount">$15,000</div>
+            <div class="calc__amount mono" id="advAmount">$12,500</div>
 
-            <div class="calculator__slider-wrap">
-              <input type="range" min="500" max="50000" step="500" value="15000" class="slider" id="loanSlider" />
+            <div style="margin: 16px 0">
+              <input type="range" min="1000" max="20000" step="500" value="12500" class="slider" id="advSlider" />
               <div class="slider-marks">
-                <span>$500</span>
-                <span>$25K</span>
-                <span>$50K</span>
+                <span>$1K</span>
+                <span>$10K</span>
+                <span>$20K</span>
               </div>
-            </div>
-
-            <div class="field">
-              <label class="field__label">Loan term</label>
-              <select id="loanTerm">
-                <option value="6">6 months</option>
-                <option value="12" selected>12 months</option>
-                <option value="18">18 months</option>
-                <option value="24">24 months</option>
-                <option value="36">36 months</option>
-              </select>
             </div>
 
             <div class="calc-summary">
               <div class="calc-summary__item">
-                <div class="calc-summary__label">Monthly payment</div>
-                <div class="calc-summary__value mono" id="calcMonthly">$1,313</div>
+                <div class="calc-summary__label">Fee (4%)</div>
+                <div class="calc-summary__value text-mute" id="advFee">$500</div>
+              </div>
+              <div class="calc-summary__item" style="background:var(--success-50); border-color:rgba(39,174,96,0.25)">
+                <div class="calc-summary__label">You receive</div>
+                <div class="calc-summary__value text-success" id="advReceive">$12,000</div>
               </div>
               <div class="calc-summary__item">
-                <div class="calc-summary__label">Total interest</div>
-                <div class="calc-summary__value mono" id="calcInterest">$757</div>
+                <div class="calc-summary__label">Repay over</div>
+                <div class="calc-summary__value mono">30 days</div>
               </div>
             </div>
 
-            <p class="text-mute" style="font-size:0.82rem;text-align:center;margin-top:14px">
-              APR: <span id="calcApr">9.0%</span> · Based on your credit profile · No prepayment penalty
+            <button class="btn btn--primary btn--full btn--lg" style="margin-top:18px" onclick="reqAdvance()">Request Advance →</button>
+            <p class="text-mute" style="font-size:0.8rem;text-align:center;margin:10px 0 0">
+              ✓ Instant approval · ✓ No FICO check · ✓ Repay proportionally as platforms pay you
             </p>
           </div>
 
           <div class="card">
-            <div class="card__title">Application Status</div>
-            <div class="card__subtitle">3-step process · 48hr funding</div>
+            <div class="card__title">How it works</div>
+            <div class="card__subtitle">Plain English. No banker tricks.</div>
 
-            <div class="steps-flow" style="grid-template-columns:1fr;gap:10px;margin-top:14px;">
-              <div class="step-badge step-badge--done">
-                <div class="step-badge__num">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                </div>
-                <div>
-                  <div class="step-badge__label">Choose amount</div>
-                  <div class="step-badge__sub">Selected: $15,000</div>
-                </div>
-              </div>
-              <div class="step-badge step-badge--active">
-                <div class="step-badge__num">2</div>
-                <div>
-                  <div class="step-badge__label">Purpose &amp; timeline</div>
-                  <div class="step-badge__sub">Complete the form below</div>
-                </div>
-              </div>
-              <div class="step-badge">
-                <div class="step-badge__num">3</div>
-                <div>
-                  <div class="step-badge__label">Review &amp; submit</div>
-                  <div class="step-badge__sub">Get a decision in &lt; 24h</div>
-                </div>
-              </div>
+            <ol style="padding-left:20px; color: var(--text-soft); line-height: 1.7; font-size: 0.9rem; margin: 14px 0 0">
+              <li><strong style="color:var(--text)">Slide to the amount</strong> you need (up to 50% of next month's projected earnings).</li>
+              <li><strong style="color:var(--text)">Approved instantly.</strong> We use your earnings history — not a credit score.</li>
+              <li><strong style="color:var(--text)">Funds in 24h.</strong> Direct to your CreatorBank account.</li>
+              <li><strong style="color:var(--text)">Repay as you earn.</strong> We auto-deduct a small % of each platform payout.</li>
+            </ol>
+
+            <div class="bank-card__highlight" style="margin-top: 16px">
+              <strong>Example:</strong> Earned $24,800 this month? Borrow up to $12,400 today. Fee: 4% ($496). Net: $11,904. Repaid proportionally over 30-60 days.
             </div>
-
-            <form id="loanForm" style="margin-top:18px" onsubmit="submitLoan(event)">
-              <div class="field">
-                <label class="field__label">Loan purpose</label>
-                <select>
-                  <option>New camera + audio kit</option>
-                  <option>YouTube ad campaign</option>
-                  <option>Hire video editor</option>
-                  <option>Studio space rental</option>
-                  <option>Emergency expense</option>
-                </select>
-              </div>
-              <div class="field">
-                <label class="field__label">When do you need the funds?</label>
-                <select>
-                  <option>Within 48 hours</option>
-                  <option>Within a week</option>
-                  <option>Within a month</option>
-                </select>
-              </div>
-              <button type="submit" class="btn btn--primary btn--full">Submit application →</button>
-            </form>
           </div>
         </div>
 
-        <!-- Loan history -->
-        <div class="card" style="margin-top:18px">
-          <div class="card__title">Loan History</div>
-          <div class="card__subtitle">Your past and active loans</div>
-          <div class="table-wrap">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Loan ID</th>
-                  <th>Type</th>
-                  <th>Amount</th>
-                  <th>Term</th>
-                  <th>Status</th>
-                  <th style="text-align:right">Next payment</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="mono">CB-LN-0429</td>
-                  <td>Equipment</td>
-                  <td class="mono">$8,500</td>
-                  <td>18 months</td>
-                  <td><span class="badge badge--success"><span class="badge__dot"></span>Active · 7/18 paid</span></td>
-                  <td style="text-align:right" class="mono">$520 · Jun 1</td>
-                </tr>
-                <tr>
-                  <td class="mono">CB-LN-0312</td>
-                  <td>Growth</td>
-                  <td class="mono">$12,000</td>
-                  <td>12 months</td>
-                  <td><span class="badge badge--purple"><span class="badge__dot"></span>Paid off</span></td>
-                  <td style="text-align:right" class="text-mute">—</td>
-                </tr>
-                <tr>
-                  <td class="mono">CB-LN-0205</td>
-                  <td>Emergency</td>
-                  <td class="mono">$1,500</td>
-                  <td>6 months</td>
-                  <td><span class="badge badge--purple"><span class="badge__dot"></span>Paid off</span></td>
-                  <td style="text-align:right" class="text-mute">—</td>
-                </tr>
-              </tbody>
-            </table>
+        <!-- ============ 2. EARLY PAYOUT ============ -->
+        <h2 class="section-title anchor-target" id="early-payout">⚡ Early Payout — Get paid today, not in 30 days</h2>
+
+        <div class="content__row content__row--2-1">
+          <div class="card">
+            <div class="card__title">Pending Platform Payouts</div>
+            <div class="card__subtitle">Claim up to 90% now · 1-2% fee</div>
+
+            <div class="pending-list" style="margin-top: 14px">
+              <div class="pending-item">
+                <div class="platform-item__logo platform-item__logo--youtube">▶</div>
+                <div>
+                  <div style="font-weight: 600">YouTube AdSense</div>
+                  <div class="pending-item__date">Pays Jun 21 · 32 days away</div>
+                </div>
+                <div class="pending-item__amount mono">$3,200</div>
+              </div>
+              <div class="pending-item">
+                <div class="platform-item__logo platform-item__logo--twitch">Tw</div>
+                <div>
+                  <div style="font-weight: 600">Twitch Bits + Subs</div>
+                  <div class="pending-item__date">Pays Jun 15 · 26 days away</div>
+                </div>
+                <div class="pending-item__amount mono">$680</div>
+              </div>
+              <div class="pending-item">
+                <div class="platform-item__logo platform-item__logo--tiktok">Tk</div>
+                <div>
+                  <div style="font-weight: 600">TikTok Creator Fund</div>
+                  <div class="pending-item__date">Pays Jun 18 · 29 days away</div>
+                </div>
+                <div class="pending-item__amount mono">$60</div>
+              </div>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid var(--border)">
+              <div>
+                <div class="text-mute" style="font-size:0.84rem">Total pending</div>
+                <div class="mono" style="font-weight:600;font-size:1.1rem">$3,940</div>
+              </div>
+              <div>
+                <div class="text-mute" style="font-size:0.84rem">After 1.3% fee</div>
+                <div class="mono" style="font-weight:700;font-size:1.3rem;color:var(--success)">$3,888</div>
+              </div>
+            </div>
+
+            <button class="btn btn--primary btn--full btn--lg" style="margin-top:14px" onclick="claimPayout()">⚡ Claim Early Payout</button>
+          </div>
+
+          <div class="bank-card">
+            <div class="bank-card__head">
+              <div class="bank-card__icon bank-card__icon--gold">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+              <div>
+                <div class="bank-card__title">Why early payout?</div>
+                <div class="bank-card__sub">Cash flow on your terms</div>
+              </div>
+            </div>
+            <p class="bank-card__body">YouTube takes 30+ days to pay. Brand sponsors take 60-90. Don't let bad payment terms stall your business.</p>
+            <ul class="bank-card__features">
+              <li>Instant access — funds in your account today</li>
+              <li>1-2% fee · Transparent, disclosed upfront</li>
+              <li>No hidden charges or surprise costs</li>
+              <li>Works with all 12+ supported platforms</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ============ 3. CREATOR LOANS ============ -->
+        <h2 class="section-title anchor-target" id="loans">🏦 Creator Loans — Long-term capital for growth</h2>
+
+        <div class="loan-types">
+          <div class="loan-type" onclick="selLoan('Equipment Finance')">
+            <div class="loan-type__icon" style="background:var(--secondary-50);color:var(--secondary-dark)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><circle cx="9" cy="12" r="3"/><path d="M22 8v8M18 6h4M18 18h4"/></svg>
+            </div>
+            <h3>Equipment Finance</h3>
+            <p class="loan-type__desc">Cameras, lights, mics, computers. Spread the cost.</p>
+            <div class="loan-type__terms"><span class="text-mute">Range</span><span>$500 – $25K</span></div>
+            <div class="loan-type__terms"><span class="text-mute">APR</span><span>8 – 12%</span></div>
+          </div>
+          <div class="loan-type" onclick="selLoan('Growth Loan')">
+            <div class="loan-type__icon" style="background:var(--primary-50);color:var(--primary)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <h3>Growth Loan</h3>
+            <p class="loan-type__desc">Marketing, hiring editors, studio space rental.</p>
+            <div class="loan-type__terms"><span class="text-mute">Range</span><span>$5K – $50K</span></div>
+            <div class="loan-type__terms"><span class="text-mute">APR</span><span>10 – 15%</span></div>
+          </div>
+          <div class="loan-type" onclick="selLoan('Emergency Cash')">
+            <div class="loan-type__icon" style="background:var(--accent-50);color:var(--accent-dark)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <h3>Emergency Cash</h3>
+            <p class="loan-type__desc">Quick small loans when payouts are delayed.</p>
+            <div class="loan-type__terms"><span class="text-mute">Range</span><span>$200 – $5K</span></div>
+            <div class="loan-type__terms"><span class="text-mute">APR</span><span>14 – 18%</span></div>
+          </div>
+        </div>
+
+        <div class="card calculator">
+          <div class="card__title">Loan Calculator</div>
+          <div class="card__subtitle">Adjust the amount to see your monthly payment</div>
+
+          <div class="calc__amount mono" id="loanAmount">$15,000</div>
+
+          <div style="margin: 14px 0">
+            <input type="range" min="500" max="50000" step="500" value="15000" class="slider" id="loanSlider" />
+            <div class="slider-marks">
+              <span>$500</span>
+              <span>$25K</span>
+              <span>$50K</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label">Loan term</label>
+            <select id="loanTerm">
+              <option value="6">6 months</option>
+              <option value="12" selected>12 months</option>
+              <option value="18">18 months</option>
+              <option value="24">24 months</option>
+              <option value="36">36 months</option>
+            </select>
+          </div>
+
+          <div class="calc-summary">
+            <div class="calc-summary__item">
+              <div class="calc-summary__label">Monthly payment</div>
+              <div class="calc-summary__value mono" id="loanMonthly">$1,313</div>
+            </div>
+            <div class="calc-summary__item">
+              <div class="calc-summary__label">Total interest</div>
+              <div class="calc-summary__value mono" id="loanInterest">$757</div>
+            </div>
+            <div class="calc-summary__item">
+              <div class="calc-summary__label">APR</div>
+              <div class="calc-summary__value mono">9.0%</div>
+            </div>
+          </div>
+
+          <button class="btn btn--purple btn--full btn--lg" style="margin-top:18px" onclick="applyLoan()">Apply for Loan →</button>
+        </div>
+
+        <!-- ============ 4. DEBIT CARD ============ -->
+        <h2 class="section-title anchor-target" id="debit-card">💳 Creator Debit Card — Spend smarter</h2>
+
+        <div class="content__row content__row--1-2">
+          <div class="bank-card">
+            <div class="debit-card-visual">
+              <div class="debit-card-visual__head">
+                <span class="debit-card-visual__brand">Creator<span style="color:#FFA500">Bank</span></span>
+                <div class="debit-card-visual__chip"></div>
+              </div>
+              <div class="debit-card-visual__num mono">•••• •••• •••• 4824</div>
+              <div class="debit-card-visual__bottom">
+                <div class="debit-card-visual__name">ALEX RIVERA</div>
+                <div class="debit-card-visual__type mono">VISA · DEBIT</div>
+              </div>
+            </div>
+            <button class="btn btn--primary btn--full" onclick="showToast('Card order placed! Arrives in 5-7 days.')">Order physical card</button>
+          </div>
+
+          <div class="bank-card">
+            <div class="bank-card__head">
+              <div class="bank-card__icon bank-card__icon--teal">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              </div>
+              <div>
+                <div class="bank-card__title">CreatorBank Debit Card</div>
+                <div class="bank-card__sub">No fees. Made for creators.</div>
+              </div>
+            </div>
+            <p class="bank-card__body">Spend directly from your CreatorBank account. Get instant cash back on creator-related purchases — gear, software, ads, even Patreon subs from your fellow creators.</p>
+            <ul class="bank-card__features">
+              <li>$0 annual fee · $0 monthly fee</li>
+              <li>0% foreign transaction fees (perfect for travel content)</li>
+              <li>1-2% cash back on creator gear, ads, and software</li>
+              <li>Virtual card instant · Physical card in 5-7 days</li>
+              <li>Lock/unlock card from app in 1 tap</li>
+            </ul>
+            <div class="bank-card__highlight">
+              <strong>Already saving you money:</strong> Based on May spending, you'd earn <strong>$182 cash back</strong> this month with the CreatorBank card.
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ 5. SAVINGS ============ -->
+        <h2 class="section-title anchor-target" id="savings">🐷 High-Yield Savings — Build your runway</h2>
+
+        <div class="content__row content__row--2-1">
+          <div class="bank-card" style="background:linear-gradient(135deg, var(--success-50), var(--secondary-50));border-color:rgba(39,174,96,0.25)">
+            <div class="bank-card__head">
+              <div class="bank-card__icon bank-card__icon--green">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+              <div>
+                <div class="bank-card__title">Build an Emergency Fund</div>
+                <div class="bank-card__sub">4.5% APY · FDIC-insured up to $250K</div>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0">
+              <div>
+                <div class="text-mute" style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em">Current APY</div>
+                <div style="font-family:var(--font-display);font-size:2.4rem;font-weight:700;color:var(--success)">4.5%</div>
+              </div>
+              <div>
+                <div class="text-mute" style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em">Big bank avg.</div>
+                <div style="font-family:var(--font-display);font-size:2.4rem;font-weight:700;color:var(--text-mute);text-decoration:line-through">0.4%</div>
+              </div>
+            </div>
+
+            <p class="bank-card__body">Most creators have no emergency fund. The income volatility crushes them. Open a CreatorBank savings account and earn 10× the national average rate.</p>
+            <ul class="bank-card__features">
+              <li>4.5% APY (compounded daily)</li>
+              <li>FDIC-insured up to $250K through partner banks</li>
+              <li>No minimum balance · No fees</li>
+              <li>Transfer anytime — no penalties or lock-up</li>
+              <li>Auto-save: set % of each payout to save</li>
+            </ul>
+            <button class="btn btn--primary btn--full btn--lg" onclick="showToast('Savings account opened!')">Open Savings Account</button>
+          </div>
+
+          <div class="card">
+            <div class="card__title">Auto-Save Calculator</div>
+            <div class="card__subtitle">Save 10% of every payout</div>
+
+            <div style="text-align:center;margin:20px 0">
+              <div class="text-mute" style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em">In 12 months you'd save</div>
+              <div style="font-family:var(--font-display);font-size:2.8rem;font-weight:700;color:var(--primary);letter-spacing:-0.02em">$29,760</div>
+              <div class="text-success" style="font-size:0.92rem;margin-top:6px">+ $1,340 in interest earned</div>
+            </div>
+
+            <div style="background:var(--surface-2);padding:14px;border-radius:10px;font-size:0.86rem;color:var(--text-soft);line-height:1.5">
+              <strong style="color:var(--text)">How we calculated this:</strong><br/>
+              Avg monthly earnings: $24,800<br/>
+              Save rate: 10% → $2,480/month<br/>
+              × 12 months + 4.5% APY compound = $29,760 + $1,340 interest
+            </div>
+
+            <button class="btn btn--ghost btn--full" style="margin-top:14px" onclick="showToast('Auto-save activated at 10%')">Activate auto-save</button>
           </div>
         </div>
 
@@ -383,43 +507,37 @@
   <script src="../js/data.js"></script>
   <script src="../js/layout.js"></script>
   <script>
-    const slider = document.getElementById('loanSlider');
-    const termSel = document.getElementById('loanTerm');
-    const apr = 0.09;
+    // Advance calculator
+    const advS = document.getElementById('advSlider');
+    function recalcAdv() {
+      const amt = parseInt(advS.value);
+      const fee = amt * 0.04;
+      document.getElementById('advAmount').textContent = '$' + amt.toLocaleString();
+      document.getElementById('advFee').textContent = '$' + Math.round(fee).toLocaleString();
+      document.getElementById('advReceive').textContent = '$' + Math.round(amt - fee).toLocaleString();
+    }
+    advS.addEventListener('input', recalcAdv);
 
+    // Loan calculator
+    const loanS = document.getElementById('loanSlider');
+    const term = document.getElementById('loanTerm');
     function recalcLoan() {
-      const principal = parseInt(slider.value);
-      const months = parseInt(termSel.value);
-      const monthlyRate = apr / 12;
-      const monthly = principal * monthlyRate / (1 - Math.pow(1 + monthlyRate, -months));
-      const totalPaid = monthly * months;
-      const interest = totalPaid - principal;
-      document.getElementById('calcAmount').textContent = '$' + principal.toLocaleString();
-      document.getElementById('calcMonthly').textContent = '$' + Math.round(monthly).toLocaleString();
-      document.getElementById('calcInterest').textContent = '$' + Math.round(interest).toLocaleString();
+      const p = parseInt(loanS.value);
+      const m = parseInt(term.value);
+      const mr = 0.09 / 12;
+      const monthly = p * mr / (1 - Math.pow(1 + mr, -m));
+      const interest = (monthly * m) - p;
+      document.getElementById('loanAmount').textContent = '$' + p.toLocaleString();
+      document.getElementById('loanMonthly').textContent = '$' + Math.round(monthly).toLocaleString();
+      document.getElementById('loanInterest').textContent = '$' + Math.round(interest).toLocaleString();
     }
-    slider.addEventListener('input', recalcLoan);
-    termSel.addEventListener('change', recalcLoan);
+    loanS.addEventListener('input', recalcLoan);
+    term.addEventListener('change', recalcLoan);
 
-    function selectLoanType(name) {
-      showToast(`${name} selected. Adjust amount below ↓`);
-      document.querySelector('.calculator').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-
-    function submitLoan(e) {
-      e.preventDefault();
-      showToast('Application submitted! Decision in < 24h.');
-      // Mark all step badges as done
-      document.querySelectorAll('.step-badge').forEach(b => {
-        b.classList.remove('step-badge--active');
-        b.classList.add('step-badge--done');
-        const num = b.querySelector('.step-badge__num');
-        num.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
-      });
-      setTimeout(() => showToast('✅ Approved! Funds in your account within 48h.'), 2500);
-    }
-
-    recalcLoan();
+    function reqAdvance() { showToast('Revenue Advance approved! Funds arriving in 24h.'); }
+    function claimPayout() { showToast('Early Payout claimed! $3,888 in your account today.'); }
+    function selLoan(type) { showToast(type + ' selected. Adjust amount below ↓'); document.getElementById('loanSlider').scrollIntoView({behavior:'smooth',block:'center'}); }
+    function applyLoan() { showToast('Loan application submitted! Decision in <24h.'); }
   </script>
 </body>
 </html>

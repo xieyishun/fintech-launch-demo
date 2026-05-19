@@ -3,421 +3,183 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Insights · CreatorBank</title>
+  <title>AI Insights · CreatorBank</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/main.css" />
   <link rel="stylesheet" href="../css/app.css" />
   <style>
-    .insight-hero {
-      background: linear-gradient(135deg, rgba(124,58,237,0.18), rgba(6,182,212,0.12));
-      border: 1px solid rgba(124,58,237,0.3);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      margin-bottom: 18px;
-      position: relative;
-      overflow: hidden;
-    }
-    .insight-hero::before {
-      content: '';
-      position: absolute;
-      top: -120px; right: -80px;
-      width: 360px; height: 360px;
-      background: radial-gradient(circle, rgba(124,58,237,0.3), transparent 70%);
-    }
-    .insight-hero__label {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.78rem;
-      font-family: var(--font-mono);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--secondary-light);
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(6,182,212,0.12);
-      border: 1px solid rgba(6,182,212,0.25);
-      margin-bottom: 16px;
-      position: relative;
-    }
-    .insight-hero__title {
-      font-size: 1.8rem;
-      letter-spacing: -0.02em;
-      margin-bottom: 10px;
-      position: relative;
-    }
-    .insight-hero__sub {
-      color: var(--text-soft);
-      font-size: 1rem;
-      max-width: 700px;
-      margin: 0 0 18px;
-      position: relative;
-    }
-    .insight-hero__stat-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      position: relative;
-    }
-    .insight-hero__stat {
-      background: rgba(0,0,0,0.25);
-      border: 1px solid var(--border);
-      padding: 16px;
-      border-radius: 12px;
-    }
-    .insight-hero__stat-label { font-size: 0.78rem; color: var(--text-mute); margin-bottom: 4px; }
-    .insight-hero__stat-value { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; }
-    @media (max-width:760px) { .insight-hero__stat-grid { grid-template-columns: 1fr; } }
-
-    .recco {
+    .insight-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 22px;
-      margin-bottom: 12px;
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 16px;
-      transition: all 0.2s;
+      position: relative;
+      box-shadow: var(--shadow-xs);
+      transition: all 0.25s;
     }
-    .recco:hover { border-color: var(--primary-light); background: var(--surface-2); }
-    .recco__icon {
-      width: 48px; height: 48px;
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-    .recco__title { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
-    .recco__desc { color: var(--text-soft); font-size: 0.9rem; margin-bottom: 10px; }
-    .recco__impact {
-      display: inline-flex; gap: 14px; align-items: center;
-      font-size: 0.82rem;
-      flex-wrap: wrap;
-    }
-    .recco__impact-tag {
-      display: inline-flex; align-items: center; gap: 4px;
-      padding: 3px 10px;
-      border-radius: 999px;
-      font-weight: 500;
-      background: rgba(16,185,129,0.15);
-      color: #6EE7B7;
-      border: 1px solid rgba(16,185,129,0.3);
-    }
-    .recco__action { color: var(--secondary-light); font-weight: 500; }
-
-    .content-row {
-      display: grid;
-      grid-template-columns: 32px 1fr 120px 100px;
-      gap: 12px;
-      align-items: center;
-      padding: 12px;
-      border-radius: 10px;
-      transition: background 0.2s;
-    }
-    .content-row:hover { background: var(--surface); }
-    .content-row__rank {
-      font-family: var(--font-display);
+    .insight-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .insight-card__priority {
+      position: absolute;
+      top: 16px; right: 16px;
+      font-size: 0.7rem;
       font-weight: 700;
-      color: var(--text-mute);
+      padding: 3px 9px;
+      border-radius: 999px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .insight-card__priority--high { background: var(--danger-50); color: var(--danger); }
+    .insight-card__priority--med  { background: var(--accent-50); color: var(--accent-dark); }
+    .insight-card__priority--low  { background: var(--secondary-50); color: var(--secondary-dark); }
+    .insight-card h3 { font-size: 1.05rem; margin-bottom: 8px; padding-right: 70px; }
+    .insight-card__icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: inline-flex; align-items: center; justify-content: center;
+      margin-bottom: 14px;
+    }
+    .growth-stat {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
       text-align: center;
     }
-    .content-row__title { font-weight: 500; font-size: 0.92rem; margin-bottom: 2px; }
-    .content-row__plat { font-size: 0.78rem; color: var(--text-mute); }
-    .content-row__earnings {
-      font-family: var(--font-display);
-      font-weight: 600;
-      text-align: right;
-    }
-    .content-row__growth { font-size: 0.82rem; color: var(--success); text-align: right; }
-
-    .platform-roi {
-      display: grid;
-      grid-template-columns: 1fr 70px;
-      gap: 12px;
-      align-items: center;
-      padding: 12px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.02);
-      margin-bottom: 8px;
-    }
-    .platform-roi__bar-wrap {
-      height: 8px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-top: 6px;
-    }
-    .platform-roi__bar {
-      height: 100%;
-      border-radius: 4px;
-      transition: width 0.8s ease;
-    }
-    .platform-roi__value { text-align: right; font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; }
-
-    .sponsor-card {
-      padding: 18px;
-      border-radius: 12px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: 42px 1fr auto;
-      gap: 14px;
-      align-items: center;
-      margin-bottom: 10px;
-      transition: all 0.2s;
-    }
-    .sponsor-card:hover { border-color: var(--accent); background: var(--surface-2); }
-    .sponsor-card__logo {
-      width: 42px; height: 42px;
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display);
-      font-weight: 700;
-      color: white;
-    }
-    .sponsor-card__name { font-weight: 600; font-size: 0.92rem; }
-    .sponsor-card__sub { font-size: 0.78rem; color: var(--text-mute); }
-    .sponsor-card__amount { font-family: var(--font-display); font-weight: 700; color: var(--accent-light); }
+    .growth-stat__label { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-mute); margin-bottom: 6px; font-weight:600; }
+    .growth-stat__value { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; }
   </style>
 </head>
 <body>
-  <div class="bg-grid"></div>
-  <div class="bg-orb bg-orb--1"></div>
-  <div class="bg-orb bg-orb--2"></div>
+  <div class="bg-soft-pattern"></div>
 
   <div class="app">
     <aside class="sidebar" id="sidebar"></aside>
 
     <main>
-      <header class="topbar" id="topbar" data-title="Monetization Insights" data-subtitle="AI-powered strategy from your creator analytics."></header>
+      <header class="topbar" id="topbar" data-title="AI Insights" data-subtitle="Personalized analysis. Real recommendations. From your real data."></header>
 
       <div class="content">
 
-        <!-- AI Insight Hero -->
-        <div class="insight-hero">
-          <div class="insight-hero__label">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg>
-            CreatorBank AI · Updated 12 min ago
-          </div>
-          <h2 class="insight-hero__title">You could increase earnings by <span class="grad-text">40% in 3 months</span>.</h2>
-          <p class="insight-hero__sub">Based on your platform analytics, audience growth, and competitor benchmarks. Here's the high-impact path:</p>
-
-          <div class="insight-hero__stat-grid">
-            <div class="insight-hero__stat">
-              <div class="insight-hero__stat-label">Current monthly</div>
-              <div class="insight-hero__stat-value mono">$20,200</div>
+        <!-- Growth signal hero -->
+        <div class="ai-card">
+          <div class="ai-card__head">
+            <div class="ai-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
             </div>
-            <div class="insight-hero__stat">
-              <div class="insight-hero__stat-label">Projected (Aug 2026)</div>
-              <div class="insight-hero__stat-value mono" style="color:var(--success)">$28,280</div>
-            </div>
-            <div class="insight-hero__stat">
-              <div class="insight-hero__stat-label">Extra annual income</div>
-              <div class="insight-hero__stat-value grad-text">+ $96,960</div>
+            <div>
+              <div class="ai-card__title">Growth signal: Strong upward momentum 🚀</div>
+              <div class="ai-card__subtitle">Last 90 days · Updated 2 hours ago</div>
             </div>
           </div>
-        </div>
+          <div class="ai-card__body">
+            Your YouTube subs grew <strong>+18% in 90 days</strong>. Combined with steady Patreon growth and a new sponsor deal, we've raised your <strong>credit limit from $35K to $50K</strong>. This is the kind of momentum that lets us bank your growth, not your past.
+          </div>
 
-        <!-- Top recommendations -->
-        <h2 style="font-size:1.3rem;margin-bottom:14px">🎯 Top 3 recommendations for you</h2>
-
-        <div class="recco">
-          <div class="recco__icon" style="background:rgba(124,58,237,0.18);color:#C4B5FD">📺</div>
-          <div>
-            <div class="recco__title">Stream on Twitch 3× weekly instead of 2×</div>
-            <p class="recco__desc">Your Twitch sessions average <strong>45% higher earnings per hour</strong> than YouTube — driven by subs and Bits. Adding one stream/week could boost monthly revenue by ~$3,000.</p>
-            <div class="recco__impact">
-              <span class="recco__impact-tag">+ $3,000/mo</span>
-              <span class="text-mute">⏱ Effort: 4hrs/week</span>
-              <a class="recco__action" href="#" onclick="showToast('Schedule template created!'); return false;">Create stream schedule →</a>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:6px">
+            <div class="growth-stat" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.18);color:white">
+              <div class="growth-stat__label" style="color:rgba(255,255,255,0.7)">YouTube subs</div>
+              <div class="growth-stat__value" style="color:#FFD580">+18%</div>
+            </div>
+            <div class="growth-stat" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.18);color:white">
+              <div class="growth-stat__label" style="color:rgba(255,255,255,0.7)">Patreon MRR</div>
+              <div class="growth-stat__value" style="color:#FFD580">+12%</div>
+            </div>
+            <div class="growth-stat" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.18);color:white">
+              <div class="growth-stat__label" style="color:rgba(255,255,255,0.7)">RPM (YouTube)</div>
+              <div class="growth-stat__value" style="color:#FFD580">$8.40</div>
+            </div>
+            <div class="growth-stat" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.18);color:white">
+              <div class="growth-stat__label" style="color:rgba(255,255,255,0.7)">LTV / sub</div>
+              <div class="growth-stat__value" style="color:#FFD580">$32</div>
             </div>
           </div>
         </div>
 
-        <div class="recco">
-          <div class="recco__icon" style="background:rgba(245,158,11,0.18);color:#FCD34D">☕</div>
-          <div>
-            <div class="recco__title">Your Patreon is underpriced by ~30%</div>
-            <p class="recco__desc">Creators with your audience size and engagement charge $7–$12 for the lowest tier. You're at $5. Tier price increases rarely cause &gt;5% churn at your engagement level.</p>
-            <div class="recco__impact">
-              <span class="recco__impact-tag">+ $1,800/mo</span>
-              <span class="text-mute">⏱ Effort: 30 min</span>
-              <a class="recco__action" href="#" onclick="showToast('Patreon migration guide sent.'); return false;">Get migration plan →</a>
+        <!-- Insights grid -->
+        <div class="content__row content__row--3" style="margin-top:16px">
+          <div class="insight-card">
+            <span class="insight-card__priority insight-card__priority--high">Action</span>
+            <div class="insight-card__icon" style="background:var(--accent-50);color:var(--accent-dark)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             </div>
+            <h3>Claim the $3,888 pending YouTube payout?</h3>
+            <p class="text-soft" style="font-size:0.88rem;margin-bottom:14px">YouTube pays in 32 days. CreatorBank can advance 90% today for 1.3% ($52 fee). If you need cash for the Q3 marketing push, now's a good time.</p>
+            <button class="btn btn--purple btn--sm">Claim early payout →</button>
+          </div>
+
+          <div class="insight-card">
+            <span class="insight-card__priority insight-card__priority--med">Opportunity</span>
+            <div class="insight-card__icon" style="background:var(--secondary-50);color:var(--secondary-dark)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <h3>Patreon ROI is your strongest lever</h3>
+            <p class="text-soft" style="font-size:0.88rem;margin-bottom:14px">Each $1 spent promoting Patreon returns $8.30 in lifetime value. Compare to YouTube ads at $2.10. <strong>Lean into Patreon</strong> for the next quarter.</p>
+            <button class="btn btn--ghost btn--sm">See breakdown →</button>
+          </div>
+
+          <div class="insight-card">
+            <span class="insight-card__priority insight-card__priority--low">FYI</span>
+            <div class="insight-card__icon" style="background:var(--success-50);color:var(--success)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>You're $9,300 ahead on taxes</h3>
+            <p class="text-soft" style="font-size:0.88rem;margin-bottom:14px">Your 28% reserve rate is conservative for your bracket. You'll likely have a $9,300 surplus by April 2027. Consider redirecting to high-yield savings (4.5% APY).</p>
+            <button class="btn btn--ghost btn--sm">Open savings →</button>
+          </div>
+
+          <div class="insight-card">
+            <span class="insight-card__priority insight-card__priority--med">Forecast</span>
+            <div class="insight-card__icon" style="background:var(--primary-50);color:var(--primary)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+            </div>
+            <h3>July dip incoming</h3>
+            <p class="text-soft" style="font-size:0.88rem;margin-bottom:14px">Your forecast shows July at $23,200 (-6% vs June). This matches your historical summer slump. Build cash reserve in June to glide through it.</p>
+            <button class="btn btn--ghost btn--sm">See forecast →</button>
+          </div>
+
+          <div class="insight-card">
+            <span class="insight-card__priority insight-card__priority--low">Saving</span>
+            <div class="insight-card__icon" style="background:var(--accent-50);color:var(--accent-dark)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h3>Switch to annual billing on Adobe</h3>
+            <p class="text-soft" style="font-size:0.88rem;margin-bottom:14px">You spend $54/mo on Adobe ($648/yr). Annual plan = $599/yr = save $49. Tiny win but adds up across 8 SaaS subscriptions.</p>
+            <button class="btn btn--ghost btn--sm">See all subs →</button>
+          </div>
+
+          <div class="insight-card">
+            <span class="insight-card__priority insight-card__priority--high">Risk</span>
+            <div class="insight-card__icon" style="background:var(--danger-50);color:var(--danger)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <h3>67% of income on one platform</h3>
+            <p class="text-soft" style="font-size:0.88rem;margin-bottom:14px">YouTube is 66% of your earnings. A single demonetization event = catastrophic. Goal: drop YouTube to &lt;50% by growing Patreon &amp; sponsorships.</p>
+            <button class="btn btn--ghost btn--sm">Diversification plan →</button>
           </div>
         </div>
 
-        <div class="recco">
-          <div class="recco__icon" style="background:rgba(6,182,212,0.18);color:#67E8F9">🎬</div>
-          <div>
-            <div class="recco__title">Repurpose long-form to TikTok daily</div>
-            <p class="recco__desc">Your TikTok has 2.5M followers but only $2.1K/month in earnings — that's just $0.84 per 1000 followers. Top creators in your niche average $4+. Daily clips from your YouTube would close the gap.</p>
-            <div class="recco__impact">
-              <span class="recco__impact-tag">+ $3,200/mo</span>
-              <span class="text-mute">⏱ Effort: 6hrs/week</span>
-              <a class="recco__action" href="#" onclick="showToast('Connecting you to top editors...'); return false;">Find an editor →</a>
-            </div>
-          </div>
-        </div>
+        <!-- ROI Calculator -->
+        <div class="card" style="margin-top:16px">
+          <div class="card__title">Per-Video ROI Tracker</div>
+          <div class="card__subtitle">Last 10 uploads · Cost basis includes editor, thumbnail, ads</div>
 
-        <!-- Two-column: Content + Platform ROI -->
-        <div class="content__row content__row--2-1" style="margin-top:18px">
-
-          <div class="card">
-            <div class="card__title">Top-Earning Content · Last 30 days</div>
-            <div class="card__subtitle">Which posts pulled their weight</div>
-
-            <div style="margin-top:10px">
-              <div class="content-row">
-                <div class="content-row__rank">1</div>
-                <div>
-                  <div class="content-row__title">"I bought every gadget from /r/futurology"</div>
-                  <div class="content-row__plat">▶ YouTube · 1.2M views</div>
-                </div>
-                <div class="content-row__earnings mono">$4,820</div>
-                <div class="content-row__growth">+ 18%</div>
-              </div>
-              <div class="content-row">
-                <div class="content-row__rank">2</div>
-                <div>
-                  <div class="content-row__title">Saturday gaming stream · valorant ranked</div>
-                  <div class="content-row__plat">🟣 Twitch · 12hr session</div>
-                </div>
-                <div class="content-row__earnings mono">$1,640</div>
-                <div class="content-row__growth">+ 22%</div>
-              </div>
-              <div class="content-row">
-                <div class="content-row__rank">3</div>
-                <div>
-                  <div class="content-row__title">"react cam vs sony fx30 — honest review"</div>
-                  <div class="content-row__plat">▶ YouTube · 480K views</div>
-                </div>
-                <div class="content-row__earnings mono">$1,420</div>
-                <div class="content-row__growth">+ 12%</div>
-              </div>
-              <div class="content-row">
-                <div class="content-row__rank">4</div>
-                <div>
-                  <div class="content-row__title">TikTok series: "things YouTubers won't tell you"</div>
-                  <div class="content-row__plat">♪ TikTok · 8 episodes</div>
-                </div>
-                <div class="content-row__earnings mono">$890</div>
-                <div class="content-row__growth">+ 35%</div>
-              </div>
-              <div class="content-row">
-                <div class="content-row__rank">5</div>
-                <div>
-                  <div class="content-row__title">Patreon exclusive: full editing project files</div>
-                  <div class="content-row__plat">☕ Patreon · 1,200 patrons</div>
-                </div>
-                <div class="content-row__earnings mono">$640</div>
-                <div class="content-row__growth">+ 8%</div>
-              </div>
-            </div>
+          <div class="table-wrap" style="margin-top:14px">
+            <table class="table">
+              <thead><tr><th>Video</th><th style="text-align:right">Views</th><th style="text-align:right">Revenue</th><th style="text-align:right">Cost</th><th style="text-align:right">ROI</th></tr></thead>
+              <tbody>
+                <tr><td>"Why I quit my $200K job to become a creator"</td><td style="text-align:right" class="mono">1.2M</td><td style="text-align:right" class="mono text-success">$4,820</td><td style="text-align:right" class="mono">$420</td><td style="text-align:right" class="mono text-success"><strong>11.5×</strong></td></tr>
+                <tr><td>"5 mistakes new creators make (that I made)"</td><td style="text-align:right" class="mono">680K</td><td style="text-align:right" class="mono text-success">$2,140</td><td style="text-align:right" class="mono">$380</td><td style="text-align:right" class="mono text-success"><strong>5.6×</strong></td></tr>
+                <tr><td>"Tour of my $30K studio setup"</td><td style="text-align:right" class="mono">520K</td><td style="text-align:right" class="mono text-success">$1,680</td><td style="text-align:right" class="mono">$340</td><td style="text-align:right" class="mono text-success"><strong>4.9×</strong></td></tr>
+                <tr><td>"Behind the scenes: editing in DaVinci"</td><td style="text-align:right" class="mono">180K</td><td style="text-align:right" class="mono text-success">$540</td><td style="text-align:right" class="mono">$420</td><td style="text-align:right" class="mono"><strong>1.3×</strong></td></tr>
+                <tr><td>"My morning routine as a YouTuber"</td><td style="text-align:right" class="mono">92K</td><td style="text-align:right" class="mono">$220</td><td style="text-align:right" class="mono">$310</td><td style="text-align:right" class="mono text-down"><strong>0.7×</strong></td></tr>
+              </tbody>
+            </table>
           </div>
 
-          <div class="card">
-            <div class="card__title">Best ROI per Hour</div>
-            <div class="card__subtitle">$ earned per hour of creating</div>
-
-            <div style="margin-top:10px">
-              <div class="platform-roi">
-                <div>
-                  <div style="display:flex;justify-content:space-between;font-size:0.9rem;margin-bottom:2px">
-                    <span>🟣 Twitch</span>
-                    <span class="text-mute" style="font-size:0.78rem">12hr/wk</span>
-                  </div>
-                  <div class="platform-roi__bar-wrap">
-                    <div class="platform-roi__bar" style="width:100%; background:#9146FF"></div>
-                  </div>
-                </div>
-                <div class="platform-roi__value">$67/h</div>
-              </div>
-              <div class="platform-roi">
-                <div>
-                  <div style="display:flex;justify-content:space-between;font-size:0.9rem;margin-bottom:2px">
-                    <span>☕ Patreon</span>
-                    <span class="text-mute" style="font-size:0.78rem">2hr/wk</span>
-                  </div>
-                  <div class="platform-roi__bar-wrap">
-                    <div class="platform-roi__bar" style="width:96%; background:#FF424D"></div>
-                  </div>
-                </div>
-                <div class="platform-roi__value">$64/h</div>
-              </div>
-              <div class="platform-roi">
-                <div>
-                  <div style="display:flex;justify-content:space-between;font-size:0.9rem;margin-bottom:2px">
-                    <span>▶ YouTube</span>
-                    <span class="text-mute" style="font-size:0.78rem">22hr/wk</span>
-                  </div>
-                  <div class="platform-roi__bar-wrap">
-                    <div class="platform-roi__bar" style="width:69%; background:#FF0000"></div>
-                  </div>
-                </div>
-                <div class="platform-roi__value">$46/h</div>
-              </div>
-              <div class="platform-roi">
-                <div>
-                  <div style="display:flex;justify-content:space-between;font-size:0.9rem;margin-bottom:2px">
-                    <span>♪ TikTok</span>
-                    <span class="text-mute" style="font-size:0.78rem">8hr/wk</span>
-                  </div>
-                  <div class="platform-roi__bar-wrap">
-                    <div class="platform-roi__bar" style="width:46%; background:#FE2C55"></div>
-                  </div>
-                </div>
-                <div class="platform-roi__value">$31/h</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Audience growth chart + Sponsorships -->
-        <div class="content__row content__row--2-1">
-          <div class="card chart-card">
-            <div class="card__title">Audience growth ↔ Earnings correlation</div>
-            <div class="card__subtitle">For every 100K followers gained, monthly earnings grow ~$650</div>
-            <div class="chart-card__canvas"><canvas id="correlationChart"></canvas></div>
-          </div>
-
-          <div class="card">
-            <div class="flex-between">
-              <div>
-                <div class="card__title">Brand Match Opportunities</div>
-                <div class="card__subtitle">3 sponsorships fit your audience</div>
-              </div>
-            </div>
-
-            <div style="margin-top:14px">
-              <div class="sponsor-card">
-                <div class="sponsor-card__logo" style="background:linear-gradient(135deg,#000,#444)">RB</div>
-                <div>
-                  <div class="sponsor-card__name">RaycastBox</div>
-                  <div class="sponsor-card__sub">Tech · 92% audience match</div>
-                </div>
-                <div class="sponsor-card__amount">~$3.2K</div>
-              </div>
-              <div class="sponsor-card">
-                <div class="sponsor-card__logo" style="background:linear-gradient(135deg,#06B6D4,#10B981)">Sm</div>
-                <div>
-                  <div class="sponsor-card__name">Smolly Energy</div>
-                  <div class="sponsor-card__sub">Beverages · 87% match</div>
-                </div>
-                <div class="sponsor-card__amount">~$2.5K</div>
-              </div>
-              <div class="sponsor-card">
-                <div class="sponsor-card__logo" style="background:linear-gradient(135deg,#F59E0B,#FB923C)">Lo</div>
-                <div>
-                  <div class="sponsor-card__name">LoomCraft Audio</div>
-                  <div class="sponsor-card__sub">Audio gear · 84% match</div>
-                </div>
-                <div class="sponsor-card__amount">~$1.8K</div>
-              </div>
-            </div>
-
-            <button class="btn btn--ghost btn--full btn--sm" style="margin-top:14px" onclick="showToast('Sponsor matches refreshed.')">View all matches →</button>
+          <div style="background:var(--primary-50);border:1px solid var(--primary-100);border-radius:10px;padding:14px;margin-top:14px;font-size:0.88rem;color:var(--text)">
+            <strong style="color:var(--primary)">AI insight:</strong> Your "Why I quit" video has 11.5× ROI. The pattern: <strong>personal story + career topic</strong>. Recommend making 2 more videos in this vein over the next 30 days.
           </div>
         </div>
 
@@ -425,64 +187,7 @@
     </main>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="../js/data.js"></script>
   <script src="../js/layout.js"></script>
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const ctx = document.getElementById('correlationChart');
-      if (ctx && window.Chart) {
-        new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May'],
-            datasets: [
-              {
-                label: 'Total followers (M)',
-                data: [2.1, 2.18, 2.25, 2.31, 2.38, 2.46, 2.55, 2.62, 2.70, 2.78, 2.85, 2.95],
-                borderColor: '#06B6D4',
-                backgroundColor: 'transparent',
-                tension: 0.4,
-                borderWidth: 2.5,
-                pointRadius: 0,
-                yAxisID: 'y1'
-              },
-              {
-                label: 'Monthly earnings ($K)',
-                data: [11.3, 12.3, 13.3, 14.2, 15.2, 16.1, 17.6, 17.1, 18.1, 18.95, 19.5, 20.2],
-                borderColor: '#7C3AED',
-                backgroundColor: 'rgba(124,58,237,0.1)',
-                tension: 0.4,
-                borderWidth: 2.5,
-                pointRadius: 0,
-                fill: true,
-                yAxisID: 'y'
-              }
-            ]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: { position: 'bottom', labels: { color: 'rgba(241,245,249,0.7)', boxWidth: 10 } }
-            },
-            scales: {
-              x: { grid: { display: false }, ticks: { color: 'rgba(241,245,249,0.5)' } },
-              y: {
-                position: 'left',
-                grid: { color: 'rgba(255,255,255,0.05)' },
-                ticks: { color: '#7C3AED', callback: (v) => '$' + v + 'K' }
-              },
-              y1: {
-                position: 'right',
-                grid: { display: false },
-                ticks: { color: '#06B6D4', callback: (v) => v + 'M' }
-              }
-            }
-          }
-        });
-      }
-    });
-  </script>
 </body>
 </html>

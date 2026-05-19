@@ -1,44 +1,55 @@
-/* Landing page interactions */
+/* Landing page interactions — Light theme */
 
-// --- Hero preview chart ---
 window.addEventListener('DOMContentLoaded', () => {
+  // Hero preview forecast chart
   const ctx = document.getElementById('heroChart');
   if (ctx && window.Chart) {
-    const gradient = ctx.getContext('2d').createLinearGradient(0, 0, 0, 200);
-    gradient.addColorStop(0, 'rgba(124, 58, 237, 0.5)');
-    gradient.addColorStop(1, 'rgba(124, 58, 237, 0)');
+    const grad = ctx.getContext('2d').createLinearGradient(0, 0, 0, 180);
+    grad.addColorStop(0, 'rgba(91, 44, 111, 0.35)');
+    grad.addColorStop(1, 'rgba(91, 44, 111, 0)');
 
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-          data: [9200, 10100, 11800, 12400, 13900, 14800, 16100, 17500, 18900, 19400, 19850, 20200],
-          borderColor: '#7C3AED',
-          backgroundColor: gradient,
-          borderWidth: 2.5,
-          fill: true,
-          tension: 0.4,
-          pointRadius: 0,
-          pointHoverRadius: 6,
-          pointHoverBackgroundColor: '#06B6D4',
-        }]
+        labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+        datasets: [
+          {
+            label: 'Actual',
+            data: [19500, 21200, 24800, null, null, null],
+            borderColor: '#5B2C6F',
+            backgroundColor: grad,
+            borderWidth: 2.5,
+            tension: 0.4,
+            fill: true,
+            pointRadius: 0,
+          },
+          {
+            label: 'Forecast',
+            data: [null, null, 24800, 25600, 23200, 25400],
+            borderColor: '#17A2B8',
+            backgroundColor: 'transparent',
+            borderWidth: 2.5,
+            borderDash: [4, 4],
+            tension: 0.4,
+            pointRadius: 0,
+          }
+        ]
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
+        plugins: { legend: { display: false }, tooltip: { enabled: false } },
         scales: {
-          x: { grid: { display: false }, ticks: { color: 'rgba(241,245,249,0.4)', font: { size: 10 } } },
-          y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: 'rgba(241,245,249,0.4)', font: { size: 10 } } }
+          x: { grid: { display: false }, ticks: { color: '#8A94A6', font: { size: 9 } } },
+          y: { grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { color: '#8A94A6', font: { size: 9 }, callback: (v) => '$' + (v/1000) + 'K' } }
         }
       }
     });
   }
 });
 
-// --- Scroll reveal ---
-const reveals = document.querySelectorAll('.section, .problem-card, .feature-card, .step, .testimonial, .price-card');
+// Scroll reveal
+const reveals = document.querySelectorAll('.problem-card, .feature-card, .step, .testimonial, .price-card, .diff-card');
 reveals.forEach(el => el.classList.add('reveal'));
 const io = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -47,20 +58,20 @@ const io = new IntersectionObserver((entries) => {
       io.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.12 });
 reveals.forEach(el => io.observe(el));
 
-// --- Hero preview parallax ---
+// Parallax hero preview
 const shell = document.querySelector('.preview-shell');
 if (shell && window.matchMedia('(min-width: 900px)').matches) {
   window.addEventListener('mousemove', (e) => {
     const x = (e.clientX / window.innerWidth - 0.5) * 4;
     const y = (e.clientY / window.innerHeight - 0.5) * 3;
-    shell.style.transform = `rotateX(${4 - y}deg) rotateY(${x}deg)`;
+    shell.style.transform = `rotateX(${2 - y}deg) rotateY(${-3 + x}deg)`;
   }, { passive: true });
 }
 
-// --- Newsletter form ---
+// Newsletter form
 const form = document.getElementById('newsletterForm');
 const toast = document.getElementById('toast');
 if (form) {
@@ -73,7 +84,7 @@ if (form) {
   });
 }
 
-// --- Smooth scroll for in-page anchors ---
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', (e) => {
     const id = link.getAttribute('href');

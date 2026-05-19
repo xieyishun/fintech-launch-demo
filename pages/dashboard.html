@@ -11,147 +11,77 @@
   <link rel="stylesheet" href="../css/app.css" />
 </head>
 <body>
-  <div class="bg-grid"></div>
-  <div class="bg-orb bg-orb--1"></div>
-  <div class="bg-orb bg-orb--2"></div>
+  <div class="bg-soft-pattern"></div>
 
   <div class="app">
-    <!-- SIDEBAR -->
-    <aside class="sidebar" id="sidebar">
-      <a href="../index.html" class="logo sidebar__logo">
-        <span class="logo__mark">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5z" fill="currentColor"/></svg>
-        </span>
-        <span><span class="logo__text">Creator</span><span class="logo__text-accent">Bank</span></span>
-      </a>
+    <aside class="sidebar" id="sidebar"></aside>
 
-      <div class="sidebar__section">Main</div>
-      <a class="sidebar__item" href="dashboard.html" data-page="dashboard">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
-        Dashboard
-      </a>
-      <a class="sidebar__item" href="earnings.html" data-page="earnings">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        Earnings
-      </a>
-      <a class="sidebar__item" href="taxes.html" data-page="taxes">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
-        Tax Planning
-      </a>
-      <a class="sidebar__item" href="loans.html" data-page="loans">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-        Creator Loans
-      </a>
-      <a class="sidebar__item" href="insights.html" data-page="insights">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11H1l8-8 8 8h-8z" transform="rotate(135 9 7)"/><circle cx="12" cy="12" r="10"/><line x1="12" y1="6" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        Insights
-      </a>
-
-      <div class="sidebar__section">Account</div>
-      <a class="sidebar__item" href="settings.html" data-page="settings">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-        Settings
-      </a>
-      <a class="sidebar__item" href="../index.html">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-        Sign out
-      </a>
-
-      <div class="sidebar__upgrade">
-        <h4>Upgrade to Pro</h4>
-        <p>Unlock AI tax planning, loans, and advanced insights.</p>
-        <a href="pricing.html" class="btn btn--primary btn--sm btn--full">Upgrade</a>
-      </div>
-    </aside>
-
-    <!-- MAIN -->
     <main>
-      <!-- TOPBAR -->
-      <header class="topbar">
-        <button class="topbar__icon-btn topbar__menu-btn" aria-label="Menu">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        </button>
-        <div class="topbar__page-title">
-          <h1>Welcome back, Alex 👋</h1>
-          <p>Here's how your creator business is doing this month.</p>
-        </div>
-        <div class="topbar__actions">
-          <div class="topbar__search">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="search" placeholder="Search earnings, platforms..." />
-          </div>
-          <button class="topbar__icon-btn" aria-label="Notifications">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-            <span class="badge-count">3</span>
-          </button>
-          <div class="topbar__profile">
-            <div class="topbar__avatar">AR</div>
-            <div>
-              <div class="topbar__name">Alex Rivera</div>
-              <div class="topbar__role">Pro plan</div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <header class="topbar" id="topbar" data-title="Welcome back, Alex 👋" data-subtitle="Here's how your creator business is doing this month."></header>
 
-      <!-- CONTENT -->
       <div class="content">
-        <!-- KPIs -->
-        <div class="content__row content__row--3">
+        <!-- 4 KPI cards -->
+        <div class="content__row content__row--4">
+          <div class="card kpi">
+            <div class="kpi__label">
+              <span class="kpi__label-icon kpi__label-icon--teal">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+              </span>
+              Total Earnings · May
+            </div>
+            <div class="kpi__value kpi__value--teal">$24,800</div>
+            <div class="kpi__delta kpi__delta--up">↑ 12% vs April · 4 sources</div>
+          </div>
+
+          <div class="card kpi">
+            <div class="kpi__label">
+              <span class="kpi__label-icon kpi__label-icon--green">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </span>
+              Tax Reserve
+            </div>
+            <div class="kpi__value kpi__value--green">$7,440</div>
+            <div class="kpi__delta">28% auto-reserved · Q3 ready</div>
+          </div>
+
           <div class="card kpi">
             <div class="kpi__label">
               <span class="kpi__label-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
               </span>
-              Total Earnings · May
+              Available Cash
             </div>
-            <div class="kpi__value">$20,200</div>
-            <div class="kpi__delta kpi__delta--up">↑ 15.2% vs April</div>
+            <div class="kpi__value kpi__value--purple">$17,360</div>
+            <a class="kpi__btn" href="loans.html">Get an advance →</a>
           </div>
 
           <div class="card kpi">
             <div class="kpi__label">
-              <span class="kpi__label-icon" style="background:rgba(245,158,11,0.15);color:#FCD34D">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg>
+              <span class="kpi__label-icon kpi__label-icon--gold">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
               </span>
-              Projected Tax Bill · 2026
+              Next Month Forecast
             </div>
-            <div class="kpi__value">$60,000</div>
-            <div class="kpi__delta kpi__delta--warn">⚡ Q3 payment due Sept 15</div>
-          </div>
-
-          <div class="card kpi">
-            <div class="kpi__label">
-              <span class="kpi__label-icon" style="background:rgba(16,185,129,0.15);color:#6EE7B7">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"/></svg>
-              </span>
-              Available for Withdrawal
-            </div>
-            <div class="kpi__value">$14,140</div>
-            <div class="kpi__delta">After 30% tax reserve</div>
+            <div class="kpi__value kpi__value--gold">$25,600</div>
+            <div class="kpi__delta kpi__delta--up">↑ 5% growth trend</div>
           </div>
         </div>
 
-        <!-- Earnings chart + Platforms -->
+        <!-- Cash Flow Forecast + Connected Platforms -->
         <div class="content__row content__row--2-1">
           <div class="card chart-card">
-            <div class="flex-between" style="margin-bottom: 8px;">
+            <div class="flex-between" style="margin-bottom:6px">
               <div>
-                <div class="card__title">Earnings · Last 12 months</div>
-                <div class="card__subtitle">Stacked by platform · USD</div>
+                <div class="card__title">Cash Flow Forecast · Next 3 months</div>
+                <div class="card__subtitle">AI-powered prediction based on 18 months of platform data</div>
               </div>
-              <select class="field" style="margin:0;max-width:140px;">
-                <option>12 months</option>
-                <option>6 months</option>
-                <option>YTD 2026</option>
-              </select>
+              <span class="badge badge--info"><span class="badge__dot"></span>99% accuracy</span>
             </div>
-            <div class="chart-card__canvas"><canvas id="earningsChart"></canvas></div>
+            <div class="chart-card__canvas"><canvas id="forecastChart"></canvas></div>
             <div class="chart-card__legend">
-              <span class="legend-item"><span class="legend-dot" style="background:#FF0000"></span>YouTube</span>
-              <span class="legend-item"><span class="legend-dot" style="background:#9146FF"></span>Twitch</span>
-              <span class="legend-item"><span class="legend-dot" style="background:#FE2C55"></span>TikTok</span>
-              <span class="legend-item"><span class="legend-dot" style="background:#FF424D"></span>Patreon</span>
+              <span class="legend-item"><span class="legend-dot" style="background:#5B2C6F"></span>Actual earnings</span>
+              <span class="legend-item"><span class="legend-dot" style="background:#17A2B8"></span>AI forecast</span>
+              <span class="legend-item"><span class="legend-dot" style="background:#FFA500;opacity:0.4"></span>Confidence range</span>
             </div>
           </div>
 
@@ -160,132 +90,100 @@
               Connected Platforms
               <button class="btn btn--sm btn--ghost" id="addPlatformBtn">+ Add</button>
             </div>
-            <div class="card__subtitle">All systems syncing in real time</div>
+            <div class="card__subtitle">All syncing in real-time</div>
             <div class="platform-list">
               <div class="platform-item">
                 <div class="platform-item__logo platform-item__logo--youtube">▶</div>
-                <div>
-                  <div class="platform-item__name">YouTube</div>
-                  <div class="platform-item__sub">900K subscribers · ✓ Synced</div>
-                </div>
-                <div>
-                  <div class="platform-item__amount">$8,500</div>
-                  <div class="platform-item__amount-sub">this month</div>
-                </div>
-              </div>
-              <div class="platform-item">
-                <div class="platform-item__logo platform-item__logo--twitch">Tw</div>
-                <div>
-                  <div class="platform-item__name">Twitch</div>
-                  <div class="platform-item__sub">250K followers · ✓ Synced</div>
-                </div>
-                <div>
-                  <div class="platform-item__amount">$3,200</div>
-                  <div class="platform-item__amount-sub">this month</div>
-                </div>
-              </div>
-              <div class="platform-item">
-                <div class="platform-item__logo platform-item__logo--tiktok">Tk</div>
-                <div>
-                  <div class="platform-item__name">TikTok</div>
-                  <div class="platform-item__sub">2.5M followers · ✓ Synced</div>
-                </div>
-                <div>
-                  <div class="platform-item__amount">$2,100</div>
-                  <div class="platform-item__amount-sub">this month</div>
-                </div>
+                <div><div class="platform-item__name">YouTube</div><div class="platform-item__sub">900K subs · ✓ Synced</div></div>
+                <div><div class="platform-item__amount">$16,400</div><div class="platform-item__amount-sub">this month</div></div>
               </div>
               <div class="platform-item">
                 <div class="platform-item__logo platform-item__logo--patreon">P</div>
-                <div>
-                  <div class="platform-item__name">Patreon</div>
-                  <div class="platform-item__sub">1,200 members · ✓ Synced</div>
-                </div>
-                <div>
-                  <div class="platform-item__amount">$6,400</div>
-                  <div class="platform-item__amount-sub">this month</div>
-                </div>
+                <div><div class="platform-item__name">Patreon</div><div class="platform-item__sub">1,200 members · ✓ Synced</div></div>
+                <div><div class="platform-item__amount">$4,200</div><div class="platform-item__amount-sub">this month</div></div>
+              </div>
+              <div class="platform-item">
+                <div class="platform-item__logo platform-item__logo--tiktok">Tk</div>
+                <div><div class="platform-item__name">TikTok</div><div class="platform-item__sub">2.5M followers · ✓ Synced</div></div>
+                <div><div class="platform-item__amount">$2,100</div><div class="platform-item__amount-sub">Creator Fund</div></div>
+              </div>
+              <div class="platform-item">
+                <div class="platform-item__logo" style="background:linear-gradient(135deg,#FFA500,#FF6719)">$</div>
+                <div><div class="platform-item__name">Sponsorships</div><div class="platform-item__sub">2 active · NordVPN, Audible</div></div>
+                <div><div class="platform-item__amount">$2,100</div><div class="platform-item__amount-sub">brand deals</div></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Revenue mix + Quick actions -->
+        <!-- Revenue mix donut + Quick actions -->
         <div class="content__row content__row--1-2">
           <div class="card chart-card">
             <div class="card__title">Revenue Mix · May</div>
-            <div class="card__subtitle">By platform</div>
-            <div class="chart-card__canvas" style="height:240px;"><canvas id="mixChart"></canvas></div>
+            <div class="card__subtitle">By source</div>
+            <div class="chart-card__canvas chart-card__canvas--sm" style="height:220px;"><canvas id="mixChart"></canvas></div>
           </div>
 
           <div class="card">
             <div class="card__title">Quick Actions</div>
             <div class="card__subtitle">Most-used shortcuts</div>
             <div class="quick-actions">
-              <button class="quick-action" id="addPlatformBtn2">
+              <a class="quick-action" href="loans.html">
                 <div class="quick-action__icon">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
                 </div>
                 <div>
-                  <div style="font-weight:500">Connect a platform</div>
-                  <div class="text-mute" style="font-size:0.78rem">YouTube, Twitch, TikTok…</div>
-                </div>
-              </button>
-              <a class="quick-action" href="taxes.html">
-                <div class="quick-action__icon" style="background:rgba(245,158,11,0.15);color:#FCD34D">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                </div>
-                <div>
-                  <div style="font-weight:500">Plan my taxes</div>
-                  <div class="text-mute" style="font-size:0.78rem">Q3 due in 4 months</div>
+                  <div style="font-weight:600">Get Revenue Advance</div>
+                  <div class="text-mute" style="font-size:0.78rem">Up to $12,400 instantly</div>
                 </div>
               </a>
-              <a class="quick-action" href="loans.html">
-                <div class="quick-action__icon" style="background:rgba(16,185,129,0.15);color:#6EE7B7">
+              <a class="quick-action" href="loans.html#early-payout">
+                <div class="quick-action__icon quick-action__icon--gold">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <div>
+                  <div style="font-weight:600">Claim Early Payout</div>
+                  <div class="text-mute" style="font-size:0.78rem">$3,888 pending available</div>
+                </div>
+              </a>
+              <a class="quick-action" href="taxes.html">
+                <div class="quick-action__icon quick-action__icon--green">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>
+                  <div style="font-weight:600">View Tax Plan</div>
+                  <div class="text-mute" style="font-size:0.78rem">Q3 due Sept 15</div>
+                </div>
+              </a>
+              <a class="quick-action" href="loans.html#debit-card">
+                <div class="quick-action__icon quick-action__icon--teal">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
                 </div>
                 <div>
-                  <div style="font-weight:500">Request a loan</div>
-                  <div class="text-mute" style="font-size:0.78rem">Up to $50K pre-approved</div>
-                </div>
-              </a>
-              <a class="quick-action" href="insights.html">
-                <div class="quick-action__icon" style="background:rgba(6,182,212,0.15);color:#67E8F9">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                </div>
-                <div>
-                  <div style="font-weight:500">Get AI insights</div>
-                  <div class="text-mute" style="font-size:0.78rem">3 new recommendations</div>
+                  <div style="font-weight:600">Order Debit Card</div>
+                  <div class="text-mute" style="font-size:0.78rem">5-7 day delivery</div>
                 </div>
               </a>
             </div>
           </div>
         </div>
 
-        <!-- Transactions -->
-        <div class="content__row" style="grid-template-columns: 1fr;">
-          <div class="card">
-            <div class="flex-between" style="margin-bottom: 4px;">
-              <div>
-                <div class="card__title">Recent Transactions</div>
-                <div class="card__subtitle">Last 8 payouts across all platforms</div>
-              </div>
-              <a href="earnings.html" class="btn btn--ghost btn--sm">View all →</a>
+        <!-- Recent Transactions -->
+        <div class="card">
+          <div class="flex-between" style="margin-bottom:4px;">
+            <div>
+              <div class="card__title">Recent Transactions</div>
+              <div class="card__subtitle">Last 8 payouts across all sources</div>
             </div>
-            <div class="table-wrap">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Platform</th>
-                    <th>Type</th>
-                    <th style="text-align:right">Amount</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody id="txBody"></tbody>
-              </table>
-            </div>
+            <a href="earnings.html" class="btn btn--ghost btn--sm">View all →</a>
+          </div>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr><th>Date</th><th>Source</th><th>Type</th><th style="text-align:right">Amount</th><th>Status</th></tr>
+              </thead>
+              <tbody id="txBody"></tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -295,35 +193,25 @@
   <!-- Add Platform Modal -->
   <div class="modal-backdrop" id="platformModal">
     <div class="modal">
-      <button class="modal__close" data-close-modal aria-label="Close">
+      <button class="modal__close" data-close-modal>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
-      <h2 style="margin-bottom:8px">Connect a platform</h2>
-      <p class="text-mute" style="margin: 0 0 24px; font-size:0.92rem;">Authorize CreatorBank to read your earnings data. Read-only access, revoke anytime.</p>
-
-      <div style="display:grid; gap:10px;">
+      <h2 style="margin-bottom:6px">Connect a platform</h2>
+      <p class="text-mute" style="margin: 0 0 22px; font-size:0.92rem;">Read-only access via official OAuth. Revoke anytime.</p>
+      <div style="display:grid;gap:8px">
+        <button class="platform-item" style="cursor:pointer;width:100%;text-align:left;" onclick="connectPlatform('Twitch')">
+          <div class="platform-item__logo platform-item__logo--twitch">Tw</div>
+          <div><div class="platform-item__name">Twitch</div><div class="platform-item__sub">Subs &amp; Bits revenue</div></div>
+          <span class="badge badge--purple" style="margin-left:auto">Connect</span>
+        </button>
         <button class="platform-item" style="cursor:pointer;width:100%;text-align:left;" onclick="connectPlatform('Instagram')">
           <div class="platform-item__logo platform-item__logo--instagram">Ig</div>
-          <div>
-            <div class="platform-item__name">Instagram Creator</div>
-            <div class="platform-item__sub">Reels Play Bonuses, brand deals</div>
-          </div>
+          <div><div class="platform-item__name">Instagram Creator</div><div class="platform-item__sub">Reels Play Bonuses</div></div>
           <span class="badge badge--purple" style="margin-left:auto">Connect</span>
         </button>
         <button class="platform-item" style="cursor:pointer;width:100%;text-align:left;" onclick="connectPlatform('Substack')">
           <div class="platform-item__logo platform-item__logo--substack">S</div>
-          <div>
-            <div class="platform-item__name">Substack</div>
-            <div class="platform-item__sub">Newsletter subscriptions</div>
-          </div>
-          <span class="badge badge--purple" style="margin-left:auto">Connect</span>
-        </button>
-        <button class="platform-item" style="cursor:pointer;width:100%;text-align:left;" onclick="connectPlatform('Kick')">
-          <div class="platform-item__logo" style="background:#53FC18;color:#000">K</div>
-          <div>
-            <div class="platform-item__name">Kick</div>
-            <div class="platform-item__sub">Streaming subscriptions</div>
-          </div>
+          <div><div class="platform-item__name">Substack</div><div class="platform-item__sub">Newsletter subs</div></div>
           <span class="badge badge--purple" style="margin-left:auto">Connect</span>
         </button>
       </div>
@@ -332,6 +220,154 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="../js/data.js"></script>
-  <script src="../js/dashboard.js"></script>
+  <script src="../js/layout.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      // Forecast chart (actual past 3 months + forecast next 3 months)
+      const fctx = document.getElementById('forecastChart');
+      if (fctx && window.Chart) {
+        const grad = fctx.getContext('2d').createLinearGradient(0, 0, 0, 280);
+        grad.addColorStop(0, 'rgba(91, 44, 111, 0.2)');
+        grad.addColorStop(1, 'rgba(91, 44, 111, 0)');
+        new Chart(fctx, {
+          type: 'line',
+          data: {
+            labels: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+            datasets: [
+              {
+                label: 'Actual',
+                data: [22150, 23500, 22250, 24800, null, null, null],
+                borderColor: '#5B2C6F',
+                backgroundColor: grad,
+                borderWidth: 3,
+                tension: 0.4,
+                pointRadius: 4,
+                pointBackgroundColor: '#5B2C6F',
+                pointBorderColor: 'white',
+                pointBorderWidth: 2,
+                fill: true,
+              },
+              {
+                label: 'Forecast',
+                data: [null, null, null, 24800, 25600, 23200, 25400],
+                borderColor: '#17A2B8',
+                backgroundColor: 'transparent',
+                borderWidth: 3,
+                borderDash: [6, 4],
+                tension: 0.4,
+                pointRadius: 4,
+                pointBackgroundColor: '#17A2B8',
+                pointBorderColor: 'white',
+                pointBorderWidth: 2,
+              },
+              {
+                label: 'High',
+                data: [null, null, null, 24800, 28200, 25600, 27900],
+                borderColor: 'rgba(255, 165, 0, 0.4)',
+                backgroundColor: 'rgba(255, 165, 0, 0.08)',
+                borderWidth: 1,
+                tension: 0.4,
+                pointRadius: 0,
+                fill: '+1',
+              },
+              {
+                label: 'Low',
+                data: [null, null, null, 24800, 23000, 20800, 22900],
+                borderColor: 'rgba(255, 165, 0, 0.4)',
+                backgroundColor: 'transparent',
+                borderWidth: 1,
+                tension: 0.4,
+                pointRadius: 0,
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                backgroundColor: '#2C3E50',
+                titleColor: 'white',
+                bodyColor: 'white',
+                borderColor: 'rgba(255,255,255,0.1)',
+                padding: 12,
+                filter: (item) => item.dataset.label === 'Actual' || item.dataset.label === 'Forecast',
+                callbacks: { label: (ctx) => `${ctx.dataset.label}: $${ctx.raw.toLocaleString()}` }
+              }
+            },
+            scales: {
+              x: { grid: { display: false }, ticks: { color: '#8A94A6' } },
+              y: {
+                grid: { color: 'rgba(0,0,0,0.05)' },
+                ticks: { color: '#8A94A6', callback: (v) => '$' + (v / 1000) + 'K' }
+              }
+            }
+          }
+        });
+      }
+
+      // Revenue mix donut
+      const mctx = document.getElementById('mixChart');
+      if (mctx && window.Chart) {
+        new Chart(mctx, {
+          type: 'doughnut',
+          data: {
+            labels: ['YouTube', 'Patreon', 'Sponsorships', 'TikTok'],
+            datasets: [{
+              data: [16400, 4200, 2100, 2100],
+              backgroundColor: ['#FF0000', '#FF424D', '#FFA500', '#FE2C55'],
+              borderColor: 'white',
+              borderWidth: 3,
+              spacing: 2,
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '65%',
+            plugins: {
+              legend: { position: 'bottom', labels: { color: '#52606D', boxWidth: 10, padding: 12, font: { size: 11 } } },
+              tooltip: {
+                backgroundColor: '#2C3E50',
+                callbacks: { label: (ctx) => `${ctx.label}: $${ctx.raw.toLocaleString()} (${((ctx.raw / 24800) * 100).toFixed(1)}%)` }
+              }
+            }
+          }
+        });
+      }
+
+      // Transactions
+      const tbody = document.getElementById('txBody');
+      if (tbody && typeof TRANSACTIONS !== 'undefined') {
+        const platLogo = {
+          'YouTube': '<span class="platform-item__logo platform-item__logo--youtube" style="width:24px;height:24px;font-size:0.65rem;display:inline-flex;vertical-align:middle;margin-right:8px;border-radius:6px;">▶</span>',
+          'Twitch':  '<span class="platform-item__logo platform-item__logo--twitch" style="width:24px;height:24px;font-size:0.7rem;display:inline-flex;vertical-align:middle;margin-right:8px;border-radius:6px;">Tw</span>',
+          'TikTok':  '<span class="platform-item__logo platform-item__logo--tiktok" style="width:24px;height:24px;font-size:0.7rem;display:inline-flex;vertical-align:middle;margin-right:8px;border-radius:6px;">Tk</span>',
+          'Patreon': '<span class="platform-item__logo platform-item__logo--patreon" style="width:24px;height:24px;font-size:0.7rem;display:inline-flex;vertical-align:middle;margin-right:8px;border-radius:6px;">P</span>',
+          'Sponsorship': '<span class="platform-item__logo" style="background:linear-gradient(135deg,#FFA500,#FF6719);width:24px;height:24px;font-size:0.7rem;display:inline-flex;vertical-align:middle;margin-right:8px;border-radius:6px;color:white;align-items:center;justify-content:center;font-weight:700">$</span>',
+        };
+        tbody.innerHTML = TRANSACTIONS.map(t => {
+          const sb = t.status === 'paid'
+            ? '<span class="badge badge--success"><span class="badge__dot"></span>Paid</span>'
+            : '<span class="badge badge--warning"><span class="badge__dot"></span>Pending</span>';
+          return `<tr>
+            <td>${t.date}</td>
+            <td>${platLogo[t.platform] || ''}${t.platform}</td>
+            <td>${t.type}</td>
+            <td style="text-align:right" class="mono">$${t.amount.toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+            <td>${sb}</td>
+          </tr>`;
+        }).join('');
+      }
+
+      document.getElementById('addPlatformBtn')?.addEventListener('click', () => openModal('platformModal'));
+    });
+
+    function connectPlatform(name) {
+      closeModal('platformModal');
+      showToast(`${name} connected successfully!`);
+    }
+  </script>
 </body>
 </html>

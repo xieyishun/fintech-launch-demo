@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features · CreatorBank</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/landing.css" />
+  <style>
+    .feat-detail {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .feat-detail:last-child { border-bottom: none; }
+    .feat-detail--reverse { grid-template-columns: 1.1fr 1fr; }
+    .feat-detail--reverse .feat-detail__visual { order: 2; }
+    .feat-detail--reverse .feat-detail__copy { order: 1; }
+    .feat-detail__copy .eyebrow { margin-bottom: 14px; }
+    .feat-detail__copy h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+    .feat-detail__copy p {
+      font-size: 1rem;
+      color: var(--text-soft);
+      line-height: 1.65;
+      margin: 0 0 18px;
+    }
+    .feat-detail__copy ul { list-style: none; padding: 0; margin: 0; }
+    .feat-detail__copy li {
+      font-size: 0.92rem;
+      color: var(--text);
+      padding: 5px 0 5px 26px;
+      position: relative;
+    }
+    .feat-detail__copy li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: 700;
+    }
+    .feat-visual {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      box-shadow: var(--shadow-md);
+    }
+    .feat-visual h4 { font-size: 0.92rem; color: var(--text-mute); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; font-weight: 600; }
+    .feat-mini-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    .feat-mini-row:last-child { border-bottom: none; }
+    .feat-mini-row .mono { font-weight: 600; }
+    @media (max-width: 880px) {
+      .feat-detail, .feat-detail--reverse { grid-template-columns: 1fr; gap: 30px; padding: 40px 0; }
+      .feat-detail--reverse .feat-detail__visual { order: 0; }
+      .feat-detail--reverse .feat-detail__copy { order: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-soft-pattern"></div>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="logo">
+        <span class="logo__mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5z" fill="currentColor"/></svg></span>
+        <span>Creator<span class="logo__text-accent">Bank</span></span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="features.html" style="color:var(--primary)">Features</a></li>
+        <li><a href="../index.html#how">How it works</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="dashboard.html">Live demo</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="login.html" class="btn btn--ghost btn--sm">Sign in</a>
+        <a href="signup.html" class="btn btn--primary btn--sm">Start Free →</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="eyebrow" style="margin-bottom:14px">Everything you need</div>
+    <h1>One platform for every <span class="grad-text">money question</span> creators face.</h1>
+    <p>From earnings tracking to tax planning to growth capital — built around how creators actually earn.</p>
+  </div>
+
+  <section class="section" style="padding-top:20px">
+
+    <!-- Feature 1: Earnings Consolidation -->
+    <div class="feat-detail">
+      <div class="feat-detail__copy">
+        <div class="eyebrow">01 · Earnings consolidation</div>
+        <h2>See all your earnings <span class="grad-text">in one place.</span></h2>
+        <p>Connect YouTube, TikTok, Patreon, Twitch, and brand sponsors. Real-time sync. Automatic categorization. No more spreadsheets, no more guessing.</p>
+        <ul>
+          <li>One-click OAuth setup (2 minutes total)</li>
+          <li>Updated every 6 hours · 99.5% uptime</li>
+          <li>Supports 12+ platforms · 2 new every quarter</li>
+          <li>Auto-tagged: AdSense, sponsorships, merch, subs</li>
+        </ul>
+      </div>
+      <div class="feat-detail__visual">
+        <div class="feat-visual">
+          <h4>Connected platforms</h4>
+          <div class="platform-list" style="margin:0">
+            <div class="platform-item">
+              <div class="platform-item__logo platform-item__logo--youtube">▶</div>
+              <div><div class="platform-item__name">YouTube</div><div class="platform-item__sub">Synced 5 min ago</div></div>
+              <div><div class="platform-item__amount mono">$16,400</div></div>
+            </div>
+            <div class="platform-item">
+              <div class="platform-item__logo platform-item__logo--patreon">P</div>
+              <div><div class="platform-item__name">Patreon</div><div class="platform-item__sub">Synced 12 min ago</div></div>
+              <div><div class="platform-item__amount mono">$4,200</div></div>
+            </div>
+            <div class="platform-item">
+              <div class="platform-item__logo platform-item__logo--tiktok">Tk</div>
+              <div><div class="platform-item__name">TikTok</div><div class="platform-item__sub">Synced 8 min ago</div></div>
+              <div><div class="platform-item__amount mono">$2,100</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 2: Tax Reserve -->
+    <div class="feat-detail feat-detail--reverse">
+      <div class="feat-detail__visual">
+        <div class="feat-visual" style="background:linear-gradient(135deg, var(--success-50), var(--secondary-50));border-color:rgba(39,174,96,0.25)">
+          <h4>Tax Reserve · 2026 YTD</h4>
+          <div style="font-family:var(--font-display);font-size:2.4rem;font-weight:700;color:var(--success);margin:8px 0">$7,440</div>
+          <div style="color:var(--text-soft);margin-bottom:14px;font-size:0.9rem">28% auto-reserved from May earnings</div>
+          <div style="height:8px;background:white;border-radius:999px;overflow:hidden;margin-bottom:14px"><div style="height:100%;width:62%;background:var(--success);border-radius:999px"></div></div>
+          <div class="feat-mini-row"><span>Q1 paid</span><span class="mono text-success">✓ $18,500</span></div>
+          <div class="feat-mini-row"><span>Q2 due Jun 15</span><span class="mono">$19,200</span></div>
+          <div class="feat-mini-row"><span>Q3 due Sep 15</span><span class="mono">$20,100</span></div>
+        </div>
+      </div>
+      <div class="feat-detail__copy">
+        <div class="eyebrow">02 · Auto tax reserve</div>
+        <h2>Never owe <span class="grad-text">surprise taxes.</span></h2>
+        <p>The day you get paid, we auto-reserve 25-30% based on income type and state. No mental math. No April panic. Just peace of mind.</p>
+        <ul>
+          <li>Per-platform tax rates (YouTube 30%, TikTok 25%...)</li>
+          <li>Quarterly estimates auto-calculated</li>
+          <li>Filing deadlines in your calendar</li>
+          <li>1099-MISC and Schedule C auto-generated</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Feature 3: Forecasting -->
+    <div class="feat-detail">
+      <div class="feat-detail__copy">
+        <div class="eyebrow">03 · Cash flow forecasting</div>
+        <h2>Predict your next <span class="grad-text">3 months.</span></h2>
+        <p>Our AI uses 18 months of your earnings history plus platform-wide trend data to forecast cash flow with 99% accuracy (±10%). Know what's coming.</p>
+        <ul>
+          <li>Forecast updated weekly · Adjusts as data comes in</li>
+          <li>Confidence ranges (low / median / high)</li>
+          <li>Detects seasonal patterns (summer slumps, Q4 spikes)</li>
+          <li>"Will I have enough for X" what-if simulator</li>
+        </ul>
+      </div>
+      <div class="feat-detail__visual">
+        <div class="feat-visual">
+          <h4>Next 3 months forecast</h4>
+          <div style="height:200px;position:relative"><canvas id="featForecast"></canvas></div>
+          <div style="display:flex;gap:14px;margin-top:10px;font-size:0.78rem;color:var(--text-soft)">
+            <span><span style="display:inline-block;width:10px;height:10px;background:#5B2C6F;border-radius:50%;margin-right:6px;vertical-align:middle"></span>Actual</span>
+            <span><span style="display:inline-block;width:10px;height:10px;background:#17A2B8;border-radius:50%;margin-right:6px;vertical-align:middle"></span>AI forecast</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 4: Revenue Advances -->
+    <div class="feat-detail feat-detail--reverse">
+      <div class="feat-detail__visual">
+        <div class="feat-visual">
+          <h4>Revenue advance · Approved</h4>
+          <div style="font-family:var(--font-display);font-size:2.4rem;font-weight:700;color:var(--primary);margin:8px 0">$12,000</div>
+          <div style="color:var(--text-soft);margin-bottom:14px;font-size:0.9rem">Arrives in your account in 24h</div>
+          <div class="feat-mini-row"><span>Advance amount</span><span class="mono">$12,500</span></div>
+          <div class="feat-mini-row"><span>Fee (4%)</span><span class="mono">$500</span></div>
+          <div class="feat-mini-row"><span>You receive</span><span class="mono text-success">$12,000</span></div>
+          <div class="feat-mini-row"><span>Repay over</span><span class="mono">30 days</span></div>
+        </div>
+      </div>
+      <div class="feat-detail__copy">
+        <div class="eyebrow">04 · Revenue advances</div>
+        <h2>Borrow against your <span class="grad-text">future earnings.</span></h2>
+        <p>Banks reject creators because of "irregular income". We don't. Get up to 50% of next month's projected earnings instantly. No FICO check. No equity given up.</p>
+        <ul>
+          <li>Instant approval (under 5 minutes)</li>
+          <li>2-5% transparent fee · Disclosed upfront</li>
+          <li>No fixed payment schedule</li>
+          <li>Repay proportionally as your platforms pay you</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Feature 5: Early Payouts -->
+    <div class="feat-detail">
+      <div class="feat-detail__copy">
+        <div class="eyebrow">05 · Early payouts</div>
+        <h2>Get paid today, <span class="grad-text">not in 30 days.</span></h2>
+        <p>YouTube takes 30+ days to pay. Sponsors take 60-90. You shouldn't have to subsidize their cash flow. Claim up to 90% of pending payouts the same day.</p>
+        <ul>
+          <li>Funds in your account within 1-2 hours</li>
+          <li>1-2% flat fee · No hidden charges</li>
+          <li>Works across all 12+ supported platforms</li>
+          <li>Auto-reconciled when platforms pay</li>
+        </ul>
+      </div>
+      <div class="feat-detail__visual">
+        <div class="feat-visual">
+          <h4>Pending payouts</h4>
+          <div class="feat-mini-row"><span>▶ YouTube · Jun 21</span><span class="mono">$3,200</span></div>
+          <div class="feat-mini-row"><span>Tw Twitch · Jun 15</span><span class="mono">$680</span></div>
+          <div class="feat-mini-row"><span>Tk TikTok · Jun 18</span><span class="mono">$60</span></div>
+          <div style="border-top:1px solid var(--border);padding-top:14px;margin-top:8px;text-align:right">
+            <div style="font-size:0.78rem;color:var(--text-mute)">Get today after 1.3% fee</div>
+            <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--success)">$3,888</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 6: Debit Card -->
+    <div class="feat-detail feat-detail--reverse">
+      <div class="feat-detail__visual">
+        <div class="feat-visual">
+          <h4>CreatorBank debit card</h4>
+          <div class="debit-card-visual" style="margin-top:0">
+            <div class="debit-card-visual__head">
+              <span class="debit-card-visual__brand">Creator<span style="color:#FFA500">Bank</span></span>
+              <div class="debit-card-visual__chip"></div>
+            </div>
+            <div class="debit-card-visual__num mono">•••• •••• •••• 4824</div>
+            <div class="debit-card-visual__bottom">
+              <div class="debit-card-visual__name">ALEX RIVERA</div>
+              <div class="debit-card-visual__type mono">VISA · DEBIT</div>
+            </div>
+          </div>
+          <div class="feat-mini-row" style="margin-top:14px"><span>This month cashback</span><span class="mono text-success">+$182</span></div>
+        </div>
+      </div>
+      <div class="feat-detail__copy">
+        <div class="eyebrow">06 · Creator debit card</div>
+        <h2>Spend smarter on <span class="grad-text">creator gear.</span></h2>
+        <p>A debit card built for the way creators spend. 1-2% cashback on cameras, software, ads, and even Patreon subs from fellow creators. Zero fees.</p>
+        <ul>
+          <li>$0 annual + monthly fee · $0 foreign transaction</li>
+          <li>1-2% cashback on creator-related purchases</li>
+          <li>Virtual card instant · Physical in 5-7 days</li>
+          <li>Lock/unlock from app · Live transaction alerts</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Feature 7: Savings -->
+    <div class="feat-detail">
+      <div class="feat-detail__copy">
+        <div class="eyebrow">07 · High-yield savings</div>
+        <h2>Earn <span class="grad-text">4.5% APY</span> while you sleep.</h2>
+        <p>Most creators have zero emergency fund — income volatility crushes them. Open a CreatorBank savings account and earn 10× the national average rate, fully FDIC-insured.</p>
+        <ul>
+          <li>4.5% APY · Compounded daily</li>
+          <li>FDIC-insured up to $250K via partner banks</li>
+          <li>No minimum balance · No fees · No lock-up</li>
+          <li>Auto-save: set % of every payout to save</li>
+        </ul>
+      </div>
+      <div class="feat-detail__visual">
+        <div class="feat-visual" style="background:linear-gradient(135deg, var(--success-50), white);border-color:rgba(39,174,96,0.25)">
+          <h4>Savings projection</h4>
+          <div style="font-family:var(--font-display);font-size:2.4rem;font-weight:700;color:var(--success);margin:8px 0">$31,100</div>
+          <div style="color:var(--text-soft);margin-bottom:14px;font-size:0.9rem">In 12 months · Saving 10% of payouts</div>
+          <div class="feat-mini-row"><span>Principal saved</span><span class="mono">$29,760</span></div>
+          <div class="feat-mini-row"><span>Interest earned</span><span class="mono text-success">+$1,340</span></div>
+          <div class="feat-mini-row"><span>vs. big bank (0.4%)</span><span class="mono text-mute">$119</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 8: AI Insights -->
+    <div class="feat-detail feat-detail--reverse">
+      <div class="feat-detail__visual">
+        <div class="feat-visual" style="background:var(--grad-card);color:white;border-color:transparent">
+          <h4 style="color:rgba(255,255,255,0.7)">AI Tax Advisor</h4>
+          <p style="color:rgba(255,255,255,0.9);font-size:0.92rem;line-height:1.6;margin-bottom:14px">
+            Found 3 opportunities for you this month:
+          </p>
+          <ol style="color:rgba(255,255,255,0.85);font-size:0.86rem;line-height:1.7;padding-left:18px;margin:0">
+            <li><strong style="color:white">Home office deduction:</strong> ~$540 saved</li>
+            <li><strong style="color:white">Camera Section 179:</strong> Full expense in 2026</li>
+            <li><strong style="color:white">SEP-IRA:</strong> Defer 15% → save $9,300 in taxes</li>
+          </ol>
+        </div>
+      </div>
+      <div class="feat-detail__copy">
+        <div class="eyebrow">08 · AI insights</div>
+        <h2>An AI advisor for <span class="grad-text">your money.</span></h2>
+        <p>Personalized analysis from your real data. Find deductions you missed. Spot risky concentrations. See which content has the best ROI. Get smart suggestions, not generic advice.</p>
+        <ul>
+          <li>AI tax advisor: deductions, retirement, planning</li>
+          <li>Per-video ROI tracking</li>
+          <li>Subscriber LTV calculations</li>
+          <li>Risk alerts (platform concentration, cash flow gaps)</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="section" style="padding-top:30px">
+    <div class="cta-strip">
+      <h2>Try it free for 14 days.</h2>
+      <p>No credit card. Cancel anytime. Full access to advances, forecasting, and debit card.</p>
+      <a href="signup.html" class="btn btn--primary btn--lg">Start free trial</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__bottom">© 2026 CreatorBank Inc. · A demo project for educational purposes.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script>
+    const ctx = document.getElementById('featForecast');
+    if (ctx && window.Chart) {
+      const grad = ctx.getContext('2d').createLinearGradient(0, 0, 0, 200);
+      grad.addColorStop(0, 'rgba(91, 44, 111, 0.25)');
+      grad.addColorStop(1, 'rgba(91, 44, 111, 0)');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+          datasets: [
+            { label: 'Actual', data: [23500, 22250, 24800, null, null, null], borderColor: '#5B2C6F', backgroundColor: grad, borderWidth: 2.5, tension: 0.4, pointRadius: 3, fill: true, pointBackgroundColor: '#5B2C6F' },
+            { label: 'Forecast', data: [null, null, 24800, 25600, 23200, 25400], borderColor: '#17A2B8', borderWidth: 2.5, borderDash: [5, 4], tension: 0.4, pointRadius: 3, pointBackgroundColor: '#17A2B8' }
+          ]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { display: false }, ticks: { color: '#8A94A6' } },
+            y: { grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { color: '#8A94A6', callback: v => '$' + (v/1000) + 'K' } }
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
