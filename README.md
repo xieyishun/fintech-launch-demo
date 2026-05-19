@@ -1,99 +1,124 @@
-# Lumen AI — Fintech Launch Demo
+# CreatorBank — Demo Site
 
-A single-page, fully responsive marketing site for a fictional AI Robo-Advisor targeting the North American market. Built with **plain HTML + CSS + JS** (no build step, no dependencies) so it deploys to Vercel in about 30 seconds.
+> An all-in-one financial platform for content creators.
+> School project · Fintech Company Launch (A2)
 
-> 🎓 This is a school-project template. Replace the placeholder copy, team names, and brand details with your team's actual concept before submitting.
+🌐 **Live demo:** _(your Vercel URL here)_
+👨‍🎓 **Team:** xieyishun + team
+🎓 **Course:** A2 Fintech Company Launch
 
 ---
 
-## 📂 What's inside
+## What is CreatorBank?
+
+A premium fintech platform built for the creator economy. Manage earnings across YouTube, Twitch, TikTok, and Patreon. Plan taxes. Apply for creator-specific loans. Get AI-powered monetization insights.
+
+This is a **frontend-only demo** built with vanilla HTML, CSS, and JavaScript. All data is mocked. No backend, no database — just a polished walkthrough of what the real product would feel like.
+
+---
+
+## Pages (9 total)
+
+| # | Page | URL | What's in it |
+|---|------|-----|-------------|
+| 1 | Landing | `/index.html` | Hero, problem/solution, features, testimonials, pricing |
+| 2 | Sign up | `/pages/signup.html` | OAuth + email signup, creator-type selector |
+| 3 | Log in | `/pages/login.html` | OAuth + email login |
+| 4 | Dashboard | `/pages/dashboard.html` | KPIs, earnings chart, platforms, transactions |
+| 5 | Earnings | `/pages/earnings.html` | Heatmap calendar, trend lines, full transaction history |
+| 6 | Tax Planning | `/pages/taxes.html` | Tax calculator, quarterly schedule, deduction tracker, AI advisor |
+| 7 | Creator Loans | `/pages/loans.html` | Eligibility, loan types, calculator slider, application flow |
+| 8 | Insights | `/pages/insights.html` | AI recommendations, top content, ROI per platform, brand matches |
+| 9 | Settings | `/pages/settings.html` | Profile, platforms, tax info, payment, notifications, API keys |
+| 10 | Pricing | `/pages/pricing.html` | 3 tiers, comparison table, FAQ |
+
+---
+
+## Tech stack
+
+- **HTML / CSS / Vanilla JS** — no frameworks, no build step
+- **[Chart.js](https://www.chartjs.org/)** via CDN — for all data visualizations
+- **Google Fonts** — Inter, Space Grotesk, JetBrains Mono
+- **Lucide-style SVG icons** — inlined
+- **Vercel** — for static hosting
+
+---
+
+## Project structure
 
 ```
-webdemo/
-├── index.html      ← all page content (Hero, About, Product, How, Team, Contact, Footer)
-├── styles.css      ← dark blue/violet theme, animations, responsive layout
-├── script.js       ← scroll reveals, form handling, hero parallax
-└── README.md       ← this file
+.
+├── index.html               # Landing page
+├── css/
+│   ├── main.css            # Design system & shared components
+│   ├── landing.css         # Landing-page-specific styles
+│   ├── app.css             # Dashboard/app shell (sidebar, topbar, cards)
+│   └── auth.css            # Login/signup layout
+├── js/
+│   ├── data.js             # Mock data + helpers + toast/modal
+│   ├── landing.js          # Hero chart, scroll reveal
+│   ├── layout.js           # Injects sidebar + topbar into app pages
+│   └── dashboard.js        # Dashboard charts and transactions
+└── pages/
+    ├── login.html
+    ├── signup.html
+    ├── dashboard.html
+    ├── earnings.html
+    ├── taxes.html
+    ├── loans.html
+    ├── insights.html
+    ├── settings.html
+    └── pricing.html
 ```
 
 ---
 
-## 🚀 Run locally
+## Mock data
 
-Just open `index.html` in any browser. That's it.
+The demo follows one creator's story:
 
-Or in VS Code:
-1. Install the **Live Server** extension
-2. Right-click `index.html` → "Open with Live Server"
+> **Alex Rivera** — multi-platform creator
+> 900K YouTube subs · 250K Twitch followers · 2.5M TikTok · 1,200 Patreon members
+> **$20,200/month** · **$200K YTD** · **15% MoM growth** · est. **$60K** tax obligation
+
+All charts, KPIs, transactions, and recommendations reference this persona, defined in [`js/data.js`](./js/data.js).
 
 ---
 
-## ☁️ Deploy to Vercel (recommended)
+## Run locally
 
-### Option A — Drag & drop (fastest, no Git needed)
-
-1. Go to https://vercel.com/new
-2. Sign in (use GitHub if you have it, otherwise email)
-3. Click **"Browse"** in the deploy panel and select the entire `webdemo` folder — or just drag the folder onto the page
-4. Vercel will give you a live URL within ~20 seconds, like `https://webdemo-xxxx.vercel.app`
-
-### Option B — Via Vercel CLI in VS Code (best for iterating)
+It's static HTML — just open `index.html` in any browser. Or for nicer navigation:
 
 ```bash
-npm install -g vercel
-cd "E:\A2 Fintech Company Launch\webdemo"
-vercel login
-vercel               # creates a preview deployment
-vercel --prod        # promotes the preview to your production URL
-```
+# Python 3
+python -m http.server 8000
 
-### Option C — Via GitHub (best if multiple teammates edit)
-
-1. Create a new repo on GitHub, push the `webdemo` folder
-2. In Vercel, click **New Project → Import Git Repository**
-3. Pick your repo → Deploy
-4. From now on, every `git push` auto-deploys
-
----
-
-## ✏️ What to customize before submitting
-
-Search-and-replace these placeholders in `index.html`:
-
-| Placeholder | Where | Replace with |
-|---|---|---|
-| `Lumen AI` / `LumenAI` | everywhere | your team's company name |
-| Hero tagline & lede | `.hero__title`, `.hero__lede` | your value proposition |
-| Stats (0.25%, $1, 24/7, $2.3T) | `.about-grid__stats` | numbers from your business plan |
-| Six feature cards | `.features` | your actual product features |
-| Team members (Alex Chen, etc.) | `.team` | your real team |
-| Email addresses | `mailto:hello@lumen.ai` etc. | real or fake contact info |
-| Footer disclosures | `.footer__disclaimer` | adjust to your jurisdiction |
-
-The avatar circles for team members use the initials inline as text — just change `AC`, `PR`, etc. to the right initials, and tweak the `--c1` / `--c2` CSS variables for different gradient colors per person.
-
----
-
-## 🎨 Theme variables
-
-All colors live in `:root` at the top of `styles.css`. Change these and the whole site updates:
-
-```css
---violet: #7C5CFF;
---cyan: #3DD9EB;
---pink: #FF6BD0;
---grad-primary: linear-gradient(135deg, #7C5CFF 0%, #3DD9EB 100%);
+# Then open http://localhost:8000
 ```
 
 ---
 
-## ✅ Checklist before your presentation
+## Deploy to Vercel
 
-- [ ] Replaced all company-name placeholders
-- [ ] Updated team member names, roles, and bios
-- [ ] Confirmed contact form works (currently shows a success message — connect to Formspree, Web3Forms, or Vercel Forms if you want real submissions)
-- [ ] Deployed to Vercel and tested the live URL on phone + laptop
-- [ ] Added the Vercel URL to your business plan document and slide deck
-- [ ] Tested all anchor links (Product, How it works, Team, Contact)
+This site is pre-configured for Vercel — push to GitHub and import. No build settings needed.
 
-Good luck with the launch! 🚀
+1. Push this repo to GitHub
+2. Go to [vercel.com](https://vercel.com) → New Project → import the repo
+3. Leave all settings as default (Vercel auto-detects static HTML)
+4. Click **Deploy** — done in ~30 seconds
+
+---
+
+## Design
+
+- **Brand colors:** Primary `#7C3AED` (purple), Secondary `#06B6D4` (cyan), Accent `#F59E0B` (amber)
+- **Theme:** Dark, premium fintech with creator-friendly energy
+- **Typography:** Inter (body) · Space Grotesk (display) · JetBrains Mono (numbers)
+
+---
+
+## License
+
+For educational use. Mock data only — not a real financial product.
+
+Made with 💜 for the A2 Fintech Launch project.
